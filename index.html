@@ -1,46 +1,31 @@
 <!DOCTYPE html>
-<html lang="es" class="dark h-full">
+<html lang="es" class="h-full">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Adivina la Bandera | Apple Liquid Glass Edition</title>
+    <title>Adivina la Bandera | Apple Edition</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- FontAwesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <!-- Google Fonts: Inter -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     
     <script>
         tailwind.config = {
-            darkMode: 'class',
             theme: {
                 extend: {
                     fontFamily: {
-                        sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+                        sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
                     },
                     colors: {
-                        apple: {
-                            bg: '#000000',
-                            card: 'rgba(255, 255, 255, 0.07)',
-                            cardDark: 'rgba(15, 15, 20, 0.65)',
-                            border: 'rgba(255, 255, 255, 0.15)',
-                            blue: '#0071e3',
-                            green: '#34c759',
-                            red: '#ff3b30',
-                            orange: '#ff9500',
-                            purple: '#af52de',
-                        }
-                    },
-                    boxShadow: {
-                        'glass': '0 8px 32px 0 rgba(0, 0, 0, 0.37)',
-                        'glass-glow': '0 0 25px rgba(255, 255, 255, 0.15)',
-                        'island': '0 20px 40px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(255, 255, 255, 0.12)',
-                    },
-                    backdropBlur: {
-                        '3xl': '64px',
+                        appleBg: '#f5f5f7',
+                        appleBlue: '#0071e3',
+                        appleBlueHover: '#005bb5',
+                        appleDark: '#1d1d1f',
+                        appleGray: '#86868b',
                     }
                 }
             }
@@ -49,94 +34,51 @@
 
     <style>
         body {
-            font-family: 'Inter', -apple-system, sans-serif;
-            background-color: #050508;
-            color: #f5f5f7;
-            overflow-x: hidden;
-            user-select: none;
-            -webkit-tap-highlight-color: transparent;
+            background-color: #f5f5f7;
+            color: #1d1d1f;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            -webkit-font-smoothing: antialiased;
         }
 
-        /* Ambient Bokeh Background Lights */
-        .bokeh-orb {
-            position: fixed;
-            border-radius: 50%;
-            filter: blur(90px);
-            opacity: 0.35;
-            pointer-events: none;
-            z-index: 0;
-            animation: float 20s infinite ease-in-out alternate;
-        }
-        .orb-1 {
-            top: -10%;
-            left: -10%;
-            width: 50vw;
-            height: 50vw;
-            background: radial-gradient(circle, rgba(0,113,227,0.8) 0%, rgba(175,82,222,0.4) 100%);
-        }
-        .orb-2 {
-            bottom: -15%;
-            right: -10%;
-            width: 55vw;
-            height: 55vw;
-            background: radial-gradient(circle, rgba(52,199,89,0.5) 0%, rgba(0,113,227,0.5) 100%);
-            animation-delay: -7s;
-        }
-        .orb-3 {
-            top: 40%;
-            left: 30%;
-            width: 35vw;
-            height: 35vw;
-            background: radial-gradient(circle, rgba(255,149,0,0.3) 0%, rgba(255,59,48,0.3) 100%);
-            animation-delay: -12s;
-        }
-
-        @keyframes float {
-            0% { transform: translate(0, 0) scale(1); }
-            50% { transform: translate(40px, 60px) scale(1.1); }
-            100% { transform: translate(-30px, 30px) scale(0.95); }
-        }
-
-        /* Liquid Glass Container */
+        /* Apple Liquid Glass Panel */
         .liquid-glass {
-            background: rgba(20, 20, 30, 0.45);
-            backdrop-filter: blur(28px) saturate(200%);
-            -webkit-backdrop-filter: blur(28px) saturate(200%);
-            border: 1px solid rgba(255, 255, 255, 0.16);
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(28px) saturate(180%);
+            -webkit-backdrop-filter: blur(28px) saturate(180%);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.05),
+                        0 0 15px 0 rgba(0, 0, 0, 0.02);
         }
 
         .liquid-glass-input {
-            background: rgba(255, 255, 255, 0.08);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            box-shadow: inset 0 1px 3px rgba(0,0,0,0.3);
+            background: rgba(240, 240, 245, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        .liquid-glass-input:focus-within {
-            border-color: rgba(0, 113, 227, 0.8);
-            box-shadow: 0 0 20px rgba(0, 113, 227, 0.4), inset 0 1px 3px rgba(0,0,0,0.3);
+        .liquid-glass-input:focus {
+            background: rgba(255, 255, 255, 0.95);
+            border-color: #0071e3;
+            box-shadow: 0 0 0 4px rgba(0, 113, 227, 0.15);
         }
 
-        /* Dynamic Island Spring Transitions */
+        /* Dynamic Island Smooth Expansion */
         .dynamic-island {
-            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.15);
-            background: rgba(10, 10, 15, 0.88);
-            backdrop-filter: blur(35px) saturate(210%);
-            -webkit-backdrop-filter: blur(35px) saturate(210%);
-            border: 1px solid rgba(255, 255, 255, 0.18);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8), 0 0 20px rgba(255, 255, 255, 0.05);
+            background: #000000;
+            color: #ffffff;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
         }
 
-        .dynamic-island.glow-correct {
-            border-color: rgba(52, 199, 89, 0.8);
-            box-shadow: 0 0 35px rgba(52, 199, 89, 0.5), 0 20px 40px rgba(0, 0, 0, 0.8);
+        /* Shake animation for incorrect answer */
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            20%, 60% { transform: translateX(-8px); }
+            40%, 80% { transform: translateX(8px); }
         }
-
-        .dynamic-island.glow-wrong {
-            border-color: rgba(255, 59, 48, 0.8);
-            box-shadow: 0 0 35px rgba(255, 59, 48, 0.5), 0 20px 40px rgba(0, 0, 0, 0.8);
+        .animate-shake {
+            animation: shake 0.4s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
         }
 
         /* Custom Scrollbar for Autocomplete */
@@ -144,1350 +86,1145 @@
             width: 6px;
         }
         ::-webkit-scrollbar-track {
-            background: rgba(0, 0, 0, 0.2);
-            border-radius: 10px;
+            background: transparent;
         }
         ::-webkit-scrollbar-thumb {
-            background: rgba(255, 255, 255, 0.25);
-            border-radius: 10px;
+            background: rgba(0, 0, 0, 0.15);
+            border-radius: 99px;
         }
         ::-webkit-scrollbar-thumb:hover {
-            background: rgba(255, 255, 255, 0.4);
-        }
-
-        /* Pulsing Glow Animation */
-        @keyframes pulseGlow {
-            0%, 100% { opacity: 0.6; transform: scale(1); }
-            50% { opacity: 1; transform: scale(1.03); }
-        }
-        .pulse-active {
-            animation: pulseGlow 2s infinite;
-        }
-
-        /* Shake animation on wrong answer */
-        @keyframes shake {
-            0%, 100% { transform: translateX(0); }
-            20%, 60% { transform: translateX(-8px); }
-            40%, 80% { transform: translateX(8px); }
-        }
-        .shake-effect {
-            animation: shake 0.4s cubic-bezier(.36,.07,.19,.97) both;
+            background: rgba(0, 0, 0, 0.3);
         }
     </style>
 </head>
+<body class="min-h-screen flex flex-col justify-between items-center p-4 sm:p-6 overflow-x-hidden selection:bg-blue-500 selection:text-white">
 
-<body class="min-h-screen flex flex-col justify-between items-center relative p-3 md:p-6 text-white overflow-y-auto">
-
-    <!-- Ambient Bokeh Elements -->
-    <div class="bokeh-orb orb-1"></div>
-    <div class="bokeh-orb orb-2"></div>
-    <div class="bokeh-orb orb-3"></div>
-
-    <!-- DYNAMIC ISLAND (APPLE INSPIRED) -->
-    <div id="dynamic-island" 
-         onclick="toggleIslandDrawer()" 
-         class="dynamic-island fixed top-4 z-50 rounded-[28px] px-4 py-2.5 flex items-center justify-between cursor-pointer w-[90%] max-w-[380px] hover:scale-[1.02] active:scale-[0.98]">
-        
-        <!-- Left Side: Dynamic Icon / Status -->
-        <div class="flex items-center space-x-2.5 overflow-hidden">
-            <div id="island-dot" class="w-3 h-3 rounded-full bg-emerald-400 animate-pulse shrink-0"></div>
-            <div id="island-icon" class="hidden text-amber-400 text-sm"><i class="fa-solid fa-fire"></i></div>
-            <span id="island-title" class="text-xs font-semibold tracking-wide text-white/90 truncate max-w-[120px] md:max-w-[160px]">
-                Adivina la Bandera
-            </span>
-        </div>
-
-        <!-- Center / Right Side: Dynamic Gameplay Info -->
-        <div id="island-content" class="flex items-center space-x-3 text-xs font-mono font-medium text-white/90">
-            <!-- Dynamic stats rendered via JS -->
-            <span id="island-timer" class="bg-white/10 px-2.5 py-1 rounded-full border border-white/10 font-bold text-sky-300">
-                00:00.000
-            </span>
-            <span id="island-badge" class="bg-white/10 px-2 py-1 rounded-full border border-white/10">
-                0/197
-            </span>
-        </div>
-    </div>
-
-    <!-- DYNAMIC ISLAND EXPANDED DRAWER (OVERLAY CARD) -->
-    <div id="island-drawer" class="hidden fixed top-20 z-40 w-[90%] max-w-[360px] liquid-glass rounded-2xl p-4 shadow-2xl backdrop-blur-3xl text-xs space-y-3">
-        <div class="flex justify-between items-center border-b border-white/10 pb-2">
-            <span class="font-bold text-white/80 flex items-center gap-1.5">
-                <i class="fa-apple-whole text-sm text-sky-400"></i> Estado Rápido
-            </span>
-            <button onclick="toggleIslandDrawer()" class="text-white/40 hover:text-white"><i class="fa-solid fa-xmark text-sm"></i></button>
-        </div>
-        <div class="grid grid-cols-2 gap-2 text-center">
-            <div class="bg-white/5 p-2 rounded-xl border border-white/10">
-                <span class="text-white/50 block text-[10px]">JUGADOR</span>
-                <span id="drawer-player" class="font-bold text-sky-400 truncate block">Invitado</span>
+    <!-- Dynamic Island Header -->
+    <header class="fixed top-4 left-1/2 transform -translate-x-1/2 z-50 w-full max-w-md px-4 pointer-events-none">
+        <div id="dynamicIsland" class="dynamic-island pointer-events-auto mx-auto rounded-full py-2.5 px-5 flex items-center justify-between text-xs sm:text-sm font-medium w-[290px] sm:w-[340px]">
+            <!-- Left Info -->
+            <div class="flex items-center space-x-2 truncate">
+                <span id="islandModeBadge" class="bg-white/20 text-white text-[10px] font-semibold uppercase px-2 py-0.5 rounded-full">
+                    Apple Glass
+                </span>
+                <span id="islandText" class="text-gray-200 font-medium truncate">Adivina la Bandera</span>
             </div>
-            <div class="bg-white/5 p-2 rounded-xl border border-white/10">
-                <span class="text-white/50 block text-[10px]">RACHA ACTUAL</span>
-                <span id="drawer-streak" class="font-bold text-amber-400 block">0 🔥</span>
-            </div>
-        </div>
-        <div class="flex items-center justify-between pt-1">
-            <span class="text-white/70">Efectos de Sonido</span>
-            <button id="drawer-audio-btn" onclick="toggleAudio()" class="px-3 py-1 bg-white/10 rounded-full border border-white/20 text-white font-medium hover:bg-white/20">
-                🔊 Activado
-            </button>
-        </div>
-    </div>
 
-
-    <!-- MAIN NAVIGATION HEADER -->
-    <header class="w-full max-w-4xl flex justify-between items-center mt-16 mb-4 z-10 px-2">
-        <div class="flex items-center space-x-3">
-            <div class="w-10 h-10 rounded-2xl bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center text-white shadow-lg border border-white/20">
-                <i class="fa-solid fa-flag text-lg"></i>
+            <!-- Right Live Stats / Timer -->
+            <div class="flex items-center space-x-3 flex-shrink-0">
+                <div id="islandStats" class="flex items-center space-x-2 text-white font-mono">
+                    <span id="islandTimer" class="hidden text-amber-400 font-semibold">00:00.00</span>
+                    <span id="islandScore" class="hidden">🎯 <strong id="scoreVal">0</strong></span>
+                    <span id="islandLives" class="hidden text-red-400">❤️ <strong id="livesVal">3</strong></span>
+                </div>
+                <button id="soundToggle" onclick="toggleAudio()" class="text-gray-400 hover:text-white transition-colors p-1" title="Activar/Desactivar Sonido">
+                    <i id="soundIcon" class="fas fa-volume-up"></i>
+                </button>
             </div>
-            <div>
-                <h1 class="text-lg font-bold tracking-tight text-white flex items-center gap-2">
-                    Adivina la Bandera
-                    <span class="text-[10px] uppercase font-extrabold bg-blue-500/20 text-blue-400 px-2 py-0.5 rounded-full border border-blue-500/30">Pro</span>
-                </h1>
-                <p class="text-xs text-white/50">Edición Liquid Glass & Dynamic Island</p>
-            </div>
-        </div>
-
-        <div class="flex items-center space-x-2">
-            <!-- Sound Toggle Button -->
-            <button onclick="toggleAudio()" id="btn-audio" title="Alternar Sonido"
-                    class="w-10 h-10 rounded-full liquid-glass flex items-center justify-center text-white/80 hover:text-white hover:bg-white/10 transition-all">
-                <i class="fa-solid fa-volume-high"></i>
-            </button>
-            <!-- Leaderboard Button -->
-            <button onclick="openLeaderboardModal()" title="Tabla de Clasificación"
-                    class="w-10 h-10 rounded-full liquid-glass flex items-center justify-center text-amber-400 hover:text-amber-300 hover:bg-white/10 transition-all">
-                <i class="fa-solid fa-trophy"></i>
-            </button>
-            <!-- Help / GitHub Pages Info Button -->
-            <button onclick="openHelpModal()" title="Instrucciones GitHub Pages"
-                    class="w-10 h-10 rounded-full liquid-glass flex items-center justify-center text-sky-400 hover:text-sky-300 hover:bg-white/10 transition-all">
-                <i class="fa-solid fa-circle-info"></i>
-            </button>
         </div>
     </header>
 
+    <!-- Canvas Confetti Overlay -->
+    <canvas id="confettiCanvas" class="fixed inset-0 pointer-events-none z-40"></canvas>
 
-    <!-- CONTAINER FOR VIEWS -->
-    <main class="w-full max-w-2xl z-10 flex-1 flex flex-col justify-center my-2">
-
-        <!-- VIEW 1: PROFILE SETUP & MODE SELECTION -->
-        <section id="view-setup" class="liquid-glass rounded-3xl p-6 md:p-8 space-y-6 text-center animate-fadeIn">
-            
+    <main class="w-full max-w-xl my-auto pt-16 pb-8 flex flex-col items-center">
+        <!-- VIEW 1: START SCREEN -->
+        <div id="startScreen" class="w-full liquid-glass rounded-[32px] p-6 sm:p-8 space-y-6 text-center shadow-2xl transition-all duration-300">
             <div class="space-y-2">
-                <span class="inline-block px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-medium text-sky-300">
-                    ✨ Experiencia Completa 197 Banderas
-                </span>
-                <h2 class="text-2xl md:text-3xl font-extrabold tracking-tight">Selecciona tu Desafío</h2>
-                <p class="text-xs md:text-sm text-white/60">Escribe el país correcto a mano con autocompletado inteligente.</p>
+                <div class="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-blue-50 text-appleBlue text-3xl mb-2 shadow-inner">
+                    🌍
+                </div>
+                <h1 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-appleDark">
+                    Adivina la Bandera
+                </h1>
+                <p class="text-sm text-appleGray max-w-xs mx-auto">
+                    Demuestra tu conocimiento geográfico global con la elegancia de Apple.
+                </p>
             </div>
 
-            <!-- Profile Input Form -->
-            <div class="max-w-md mx-auto space-y-2 text-left">
-                <label class="block text-xs font-medium text-white/70 ml-1">Tu Nombre de Jugador:</label>
+            <!-- Player Name Input -->
+            <div class="text-left space-y-1.5">
+                <label class="text-xs font-semibold uppercase text-appleGray tracking-wider ml-1">Tu Nombre / Nickname</label>
                 <div class="relative">
-                    <i class="fa-solid fa-user absolute left-4 top-1/2 -translate-y-1/2 text-white/40"></i>
-                    <input type="text" id="player-name-input" maxlength="20" placeholder="Ej. Alex_Speedrunner"
-                           class="w-full pl-11 pr-4 py-3 rounded-2xl liquid-glass-input text-white text-sm font-medium focus:outline-none placeholder-white/30 transition-all">
-                </div>
-            </div>
-
-            <!-- Game Modes Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-3 pt-2 text-left">
-                
-                <!-- SUPER FEATURED MODE: 197 SPEEDRUN -->
-                <button onclick="selectMode('speedrun')" 
-                        class="md:col-span-2 group p-4 rounded-2xl bg-gradient-to-r from-blue-600/30 via-indigo-600/20 to-purple-600/30 border border-blue-400/40 hover:border-blue-400 hover:bg-blue-600/40 transition-all relative overflow-hidden shadow-lg">
-                    <div class="absolute -right-4 -bottom-4 text-white/5 text-8xl font-black italic select-none">197</div>
-                    <div class="flex items-center justify-between relative z-10">
-                        <div class="flex items-center space-x-3">
-                            <div class="w-12 h-12 rounded-xl bg-blue-500/30 border border-blue-400/50 flex items-center justify-center text-blue-300 text-xl font-bold group-hover:scale-110 transition-transform">
-                                🚀
-                            </div>
-                            <div>
-                                <div class="flex items-center gap-2">
-                                    <h3 class="font-bold text-white text-base">TODAS LAS BANDERAS (197)</h3>
-                                    <span class="bg-amber-400/20 text-amber-300 text-[10px] font-black px-2 py-0.5 rounded-full border border-amber-400/30">SPEEDRUN</span>
-                                </div>
-                                <p class="text-xs text-white/70">Maratón global. Completa los 197 países en el menor tiempo.</p>
-                            </div>
-                        </div>
-                        <i class="fa-solid fa-chevron-right text-white/40 group-hover:text-white group-hover:translate-x-1 transition-all"></i>
-                    </div>
-                </button>
-
-                <!-- MODE: 10 FLAGS -->
-                <button onclick="selectMode('10')" 
-                        class="p-4 rounded-2xl bg-white/5 border border-white/10 hover:border-white/30 hover:bg-white/10 transition-all group flex items-center justify-between">
-                    <div class="flex items-center space-x-3">
-                        <span class="text-2xl">🎯</span>
-                        <div>
-                            <h4 class="font-bold text-sm text-white">10 Banderas</h4>
-                            <p class="text-[11px] text-white/50">Partida rápida expres</p>
-                        </div>
-                    </div>
-                    <i class="fa-solid fa-chevron-right text-white/30 group-hover:text-white transition-all"></i>
-                </button>
-
-                <!-- MODE: 20 FLAGS -->
-                <button onclick="selectMode('20')" 
-                        class="p-4 rounded-2xl bg-white/5 border border-white/10 hover:border-white/30 hover:bg-white/10 transition-all group flex items-center justify-between">
-                    <div class="flex items-center space-x-3">
-                        <span class="text-2xl">🏁</span>
-                        <div>
-                            <h4 class="font-bold text-sm text-white">20 Banderas</h4>
-                            <p class="text-[11px] text-white/50">Desafío estándar</p>
-                        </div>
-                    </div>
-                    <i class="fa-solid fa-chevron-right text-white/30 group-hover:text-white transition-all"></i>
-                </button>
-
-                <!-- MODE: TIME ATTACK (60 SECONDS) -->
-                <button onclick="selectMode('time')" 
-                        class="p-4 rounded-2xl bg-white/5 border border-white/10 hover:border-white/30 hover:bg-white/10 transition-all group flex items-center justify-between">
-                    <div class="flex items-center space-x-3">
-                        <span class="text-2xl">⏱️</span>
-                        <div>
-                            <h4 class="font-bold text-sm text-white">Contrarreloj</h4>
-                            <p class="text-[11px] text-white/50">60 segundos de infarto</p>
-                        </div>
-                    </div>
-                    <i class="fa-solid fa-chevron-right text-white/30 group-hover:text-white transition-all"></i>
-                </button>
-
-                <!-- MODE: SURVIVAL (3 LIVES) -->
-                <button onclick="selectMode('survival')" 
-                        class="p-4 rounded-2xl bg-white/5 border border-white/10 hover:border-white/30 hover:bg-white/10 transition-all group flex items-center justify-between">
-                    <div class="flex items-center space-x-3">
-                        <span class="text-2xl">💀</span>
-                        <div>
-                            <h4 class="font-bold text-sm text-white">Supervivencia</h4>
-                            <p class="text-[11px] text-white/50">3 Vidas. Sin errores.</p>
-                        </div>
-                    </div>
-                    <i class="fa-solid fa-chevron-right text-white/30 group-hover:text-white transition-all"></i>
-                </button>
-
-            </div>
-        </section>
-
-
-        <!-- VIEW 2: ACTIVE GAMEPLAY SCREEN -->
-        <section id="view-game" class="hidden liquid-glass rounded-3xl p-5 md:p-8 space-y-6 flex flex-col items-center relative overflow-visible">
-            
-            <!-- Top Controls bar in game -->
-            <div class="w-full flex justify-between items-center text-xs text-white/60">
-                <button onclick="confirmExitGame()" class="hover:text-white flex items-center gap-1 bg-white/5 px-3 py-1.5 rounded-full border border-white/10">
-                    <i class="fa-solid fa-arrow-left"></i> Salir
-                </button>
-
-                <div id="game-lives-display" class="hidden flex items-center space-x-1 text-sm text-red-400">
-                    <i class="fa-solid fa-heart"></i>
-                    <i class="fa-solid fa-heart"></i>
-                    <i class="fa-solid fa-heart"></i>
-                </div>
-
-                <div class="flex items-center gap-2">
-                    <span id="game-mode-label" class="bg-blue-500/20 text-blue-300 font-semibold px-2.5 py-1 rounded-full border border-blue-500/30">
-                        SPEEDRUN 197
+                    <input type="text" id="playerNameInput" placeholder="Escribe tu nombre..." value="Jugador" maxlength="16"
+                           class="w-full liquid-glass-input px-4 py-3 rounded-2xl text-appleDark font-medium placeholder-gray-400 focus:outline-none">
+                    <span class="absolute right-3 top-3 text-gray-400">
+                        <i class="fas fa-user-circle text-lg"></i>
                     </span>
                 </div>
             </div>
 
-            <!-- FLAG DISPLAY CARD -->
-            <div id="flag-card-container" class="relative w-full max-w-sm aspect-[3/2] rounded-2xl overflow-hidden border-2 border-white/20 shadow-2xl bg-black/40 flex items-center justify-center group transition-transform duration-300">
-                
-                <!-- Loading Spinner behind image -->
-                <div id="flag-spinner" class="absolute inset-0 flex items-center justify-center bg-black/40 backdrop-blur-md z-10">
-                    <i class="fa-solid fa-circle-notch animate-spin text-3xl text-sky-400"></i>
-                </div>
+            <!-- Game Mode Selector -->
+            <div class="text-left space-y-2">
+                <label class="text-xs font-semibold uppercase text-appleGray tracking-wider ml-1">Selecciona Modo de Juego</label>
+                <div class="grid grid-cols-1 gap-2.5">
+                    <button onclick="selectMode('10')" class="mode-btn active group relative p-3.5 rounded-2xl border text-left transition-all flex items-center justify-between bg-white/60 border-blue-500/40 shadow-sm hover:border-blue-500" data-mode="10">
+                        <div class="flex items-center space-x-3">
+                            <span class="text-2xl">🎯</span>
+                            <div>
+                                <div class="font-semibold text-appleDark text-sm">10 Banderas</div>
+                                <div class="text-xs text-appleGray">Rápido, ideal para un descanso breve</div>
+                            </div>
+                        </div>
+                        <i class="fas fa-check-circle text-appleBlue text-lg opacity-100 check-icon"></i>
+                    </button>
 
-                <!-- Flag Image -->
-                <img id="flag-image" 
-                     src="" 
-                     alt="Bandera" 
-                     onload="onFlagLoaded()"
-                     class="w-full h-full object-cover rounded-xl transition-all duration-300 group-hover:scale-105">
-                
-                <!-- Feedback overlay ring -->
-                <div id="flag-feedback-overlay" class="absolute inset-0 pointer-events-none transition-all duration-300"></div>
+                    <button onclick="selectMode('20')" class="mode-btn group relative p-3.5 rounded-2xl border border-gray-200/60 text-left transition-all flex items-center justify-between bg-white/40 hover:bg-white/70 hover:border-gray-300" data-mode="20">
+                        <div class="flex items-center space-x-3">
+                            <span class="text-2xl">🚀</span>
+                            <div>
+                                <div class="font-semibold text-appleDark text-sm">20 Banderas</div>
+                                <div class="text-xs text-appleGray">El desafío estándar y equilibrado</div>
+                            </div>
+                        </div>
+                        <i class="fas fa-check-circle text-appleBlue text-lg opacity-0 check-icon"></i>
+                    </button>
+
+                    <button onclick="selectMode('197')" class="mode-btn group relative p-3.5 rounded-2xl border border-gray-200/60 text-left transition-all flex items-center justify-between bg-white/40 hover:bg-white/70 hover:border-gray-300" data-mode="197">
+                        <div class="flex items-center space-x-3">
+                            <span class="text-2xl">⚡</span>
+                            <div>
+                                <div class="font-semibold text-appleDark text-sm">197 Banderas (Maratón Speedrun)</div>
+                                <div class="text-xs text-appleGray">Recorre el planeta entero con reloj en milisegundos</div>
+                            </div>
+                        </div>
+                        <i class="fas fa-check-circle text-appleBlue text-lg opacity-0 check-icon"></i>
+                    </button>
+
+                    <button onclick="selectMode('survival')" class="mode-btn group relative p-3.5 rounded-2xl border border-gray-200/60 text-left transition-all flex items-center justify-between bg-white/40 hover:bg-white/70 hover:border-gray-300" data-mode="survival">
+                        <div class="flex items-center space-x-3">
+                            <span class="text-2xl">💀</span>
+                            <div>
+                                <div class="font-semibold text-appleDark text-sm">Supervivencia</div>
+                                <div class="text-xs text-appleGray">3 vidas. ¿Hasta dónde puedes llegar?</div>
+                            </div>
+                        </div>
+                        <i class="fas fa-check-circle text-appleBlue text-lg opacity-0 check-icon"></i>
+                    </button>
+
+                    <button onclick="selectMode('timeattack')" class="mode-btn group relative p-3.5 rounded-2xl border border-gray-200/60 text-left transition-all flex items-center justify-between bg-white/40 hover:bg-white/70 hover:border-gray-300" data-mode="timeattack">
+                        <div class="flex items-center space-x-3">
+                            <span class="text-2xl">⏱️️</span>
+                            <div>
+                                <div class="font-semibold text-appleDark text-sm">Contrarreloj (60s)</div>
+                                <div class="text-xs text-appleGray">Máximas banderas antes de que venza el tiempo</div>
+                            </div>
+                        </div>
+                        <i class="fas fa-check-circle text-appleBlue text-lg opacity-0 check-icon"></i>
+                    </button>
+                </div>
             </div>
 
-            <!-- MANUAL INPUT & SMART AUTOCOMPLETE SECTION -->
-            <div class="w-full max-w-md relative space-y-3">
-                <label for="country-input" class="block text-center text-xs text-white/60 font-medium">
-                    Escribe el país en español o usa sugerencias:
-                </label>
+            <!-- Start Game Button -->
+            <button onclick="startGame()" class="w-full py-4 bg-appleBlue hover:bg-appleBlueHover text-white font-semibold rounded-2xl shadow-lg shadow-blue-500/25 transition-all transform active:scale-[0.98] flex items-center justify-center space-x-2 text-base">
+                <span>Comenzar Desafío</span>
+                <i class="fas fa-arrow-right text-sm"></i>
+            </button>
 
+            <!-- Leaderboard Quick Link -->
+            <button onclick="toggleLeaderboardModal(true)" class="text-xs font-semibold text-appleBlue hover:underline inline-flex items-center space-x-1 pt-1">
+                <i class="fas fa-trophy"></i>
+                <span>Ver Tabla de Clasificación Mundial</span>
+            </button>
+        </div>
+
+        <!-- VIEW 2: GAMEPLAY SCREEN -->
+        <div id="gameScreen" class="hidden w-full liquid-glass rounded-[32px] p-6 sm:p-8 space-y-6 shadow-2xl transition-all duration-300 relative">
+            <!-- Progress Bar -->
+            <div class="w-full bg-gray-200/70 h-2 rounded-full overflow-hidden">
+                <div id="progressBar" class="bg-appleBlue h-full transition-all duration-300 rounded-full" style="width: 0%"></div>
+            </div>
+
+            <!-- Flag Container -->
+            <div class="flex flex-col items-center justify-center space-y-3 py-2">
+                <div class="relative group max-w-[280px] sm:max-w-[320px] w-full aspect-[3/2] rounded-2xl overflow-hidden shadow-xl border border-black/10 bg-gray-100 flex items-center justify-center">
+                    <img id="flagImage" src="" alt="Bandera" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                         onerror="this.src='https://placehold.co/320x213/f5f5f7/1d1d1f?text=Bandera+No+Disponible'">
+                    <div id="flagSkeleton" class="absolute inset-0 bg-gray-200 animate-pulse flex items-center justify-center">
+                        <i class="fas fa-flag text-gray-300 text-3xl"></i>
+                    </div>
+                </div>
+                <div class="text-xs font-medium text-appleGray tracking-wider uppercase" id="flagCounter">
+                    Bandera 1 de 10
+                </div>
+            </div>
+
+            <!-- Autocomplete Input Section -->
+            <div class="relative space-y-2">
                 <div class="relative">
-                    <input type="text" 
-                           id="country-input" 
-                           autocomplete="off" 
-                           autocorrect="off"
-                           spellcheck="false"
-                           placeholder="Ej. España, Francia, Brasil..." 
-                           oninput="onInputChange(this.value)"
-                           onkeydown="handleInputKeydown(event)"
-                           class="w-full pl-4 pr-24 py-3.5 rounded-2xl liquid-glass-input text-white font-medium text-base focus:outline-none placeholder-white/30 transition-all">
-                    
-                    <button onclick="submitGuess()" 
-                            class="absolute right-2 top-1/2 -translate-y-1/2 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-bold text-xs px-4 py-2 rounded-xl transition-all shadow-md active:scale-95 flex items-center gap-1.5">
-                        <span>Enviar</span>
-                        <i class="fa-solid fa-paper-plane text-[10px]"></i>
+                    <input type="text" id="countryInput" placeholder="Escribe el nombre del país..." autocomplete="off"
+                           class="w-full liquid-glass-input px-5 py-4 text-lg rounded-2xl text-appleDark font-medium placeholder-gray-400 focus:outline-none"
+                           oninput="handleInputChange(this.value)"
+                           onkeydown="handleKeyDown(event)">
+                    <button id="submitBtn" onclick="submitCurrentAnswer()" class="absolute right-2 top-2 bottom-2 px-5 bg-appleBlue text-white font-medium rounded-xl hover:bg-appleBlueHover transition-all flex items-center justify-center shadow-md">
+                        <i class="fas fa-arrow-up text-sm"></i>
                     </button>
                 </div>
 
-                <!-- SMART AUTOCOMPLETE DROPDOWN MENU -->
-                <div id="autocomplete-list" 
-                     class="hidden absolute left-0 right-0 top-full mt-2 liquid-glass rounded-2xl max-h-52 overflow-y-auto z-50 border border-white/20 shadow-2xl p-1 divide-y divide-white/5">
-                    <!-- Suggestions appended here via JS -->
+                <!-- Floating Dropdown Autocomplete iOS style -->
+                <div id="autocompleteDropdown" class="hidden absolute left-0 right-0 top-full mt-2 bg-white/95 backdrop-blur-2xl border border-white/80 rounded-2xl shadow-2xl z-50 overflow-hidden max-h-56 overflow-y-auto divide-y divide-gray-100">
+                    <!-- Dynamic suggestions go here -->
                 </div>
             </div>
 
-            <!-- STATS IN-GAME FOOTER -->
-            <div class="w-full max-w-md grid grid-cols-3 gap-2 pt-2 text-center text-xs">
-                <div class="bg-white/5 p-2 rounded-xl border border-white/10">
-                    <span class="text-white/40 block text-[10px]">PROGRESO</span>
-                    <span id="stat-progress" class="font-extrabold text-sky-400 text-sm">1 / 197</span>
-                </div>
-                <div class="bg-white/5 p-2 rounded-xl border border-white/10">
-                    <span class="text-white/40 block text-[10px]">ACIERTOS</span>
-                    <span id="stat-score" class="font-extrabold text-emerald-400 text-sm">0</span>
-                </div>
-                <div class="bg-white/5 p-2 rounded-xl border border-white/10">
-                    <span class="text-white/40 block text-[10px]">RACHA</span>
-                    <span id="stat-streak" class="font-extrabold text-amber-400 text-sm">0 🔥</span>
-                </div>
-            </div>
-
-        </section>
-
-
-        <!-- VIEW 3: GAME OVER / VICTORY SUMMARY MODAL -->
-        <section id="view-summary" class="hidden liquid-glass rounded-3xl p-6 md:p-8 space-y-6 text-center animate-fadeIn">
-            
-            <div id="summary-icon-container" class="w-20 h-20 mx-auto rounded-full bg-emerald-500/20 border-2 border-emerald-400/50 flex items-center justify-center text-4xl text-emerald-400 shadow-xl">
-                🏆
-            </div>
-
-            <div class="space-y-1">
-                <h2 id="summary-title" class="text-2xl md:text-3xl font-extrabold">¡Maratón Completado!</h2>
-                <p id="summary-subtitle" class="text-xs md:text-sm text-white/60">Has completado todas las 197 banderas.</p>
-            </div>
-
-            <!-- Score Stats Card -->
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-3 text-center">
-                <div class="bg-white/5 p-3 rounded-2xl border border-white/10">
-                    <span class="text-white/50 block text-[10px] uppercase font-semibold">Tiempo Final</span>
-                    <span id="sum-time" class="text-base md:text-lg font-mono font-extrabold text-sky-300">00:00.000</span>
-                </div>
-                <div class="bg-white/5 p-3 rounded-2xl border border-white/10">
-                    <span class="text-white/50 block text-[10px] uppercase font-semibold">Aciertos</span>
-                    <span id="sum-score" class="text-base md:text-lg font-extrabold text-emerald-400">197 / 197</span>
-                </div>
-                <div class="bg-white/5 p-3 rounded-2xl border border-white/10">
-                    <span class="text-white/50 block text-[10px] uppercase font-semibold">Precisión</span>
-                    <span id="sum-accuracy" class="text-base md:text-lg font-extrabold text-purple-300">100%</span>
-                </div>
-                <div class="bg-white/5 p-3 rounded-2xl border border-white/10">
-                    <span class="text-white/50 block text-[10px] uppercase font-semibold">Mejor Racha</span>
-                    <span id="sum-streak" class="text-base md:text-lg font-extrabold text-amber-400">197 🔥</span>
-                </div>
-            </div>
-
-            <!-- Action Buttons -->
-            <div class="flex flex-col md:flex-row gap-3 pt-2">
-                <button onclick="saveAndGoToLeaderboard()" 
-                        class="flex-1 py-3.5 px-6 rounded-2xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-bold text-sm transition-all shadow-lg active:scale-95 flex items-center justify-center gap-2">
-                    <i class="fa-solid fa-trophy"></i> Guardar en Clasificación
+            <!-- Give up / Skip Button -->
+            <div class="flex justify-between items-center text-xs text-appleGray pt-2">
+                <button onclick="skipFlag()" class="hover:text-red-500 transition-colors flex items-center space-x-1">
+                    <i class="fas fa-forward"></i>
+                    <span>Saltar esta bandera</span>
                 </button>
-                <button onclick="restartCurrentGame()" 
-                        class="py-3.5 px-6 rounded-2xl bg-white/10 hover:bg-white/20 border border-white/20 text-white font-bold text-sm transition-all active:scale-95 flex items-center justify-center gap-2">
-                    <i class="fa-solid fa-rotate-right"></i> Jugar de Nuevo
+                <span class="text-gray-400">Presiona <kbd class="px-1.5 py-0.5 bg-gray-200 text-gray-700 rounded text-[10px]">Enter ↵</kbd> para responder</span>
+            </div>
+        </div>
+
+        <!-- VIEW 3: SUMMARY SCREEN -->
+        <div id="summaryScreen" class="hidden w-full liquid-glass rounded-[32px] p-6 sm:p-8 space-y-6 text-center shadow-2xl transition-all duration-300">
+            <div class="space-y-2">
+                <div id="summaryIcon" class="inline-flex items-center justify-center w-20 h-20 rounded-full bg-blue-50 text-appleBlue text-4xl mb-1 shadow-inner">
+                    🏆
+                </div>
+                <h2 class="text-3xl font-extrabold text-appleDark" id="summaryTitle">
+                    ¡Completado!
+                </h2>
+                <p class="text-sm text-appleGray" id="summarySubtitle">
+                    Resumen final de tu partida
+                </p>
+            </div>
+
+            <!-- Stats Grid -->
+            <div class="grid grid-cols-2 gap-3 text-left">
+                <div class="p-4 rounded-2xl bg-white/50 border border-white/80 shadow-sm">
+                    <div class="text-xs text-appleGray font-medium">Aciertos</div>
+                    <div class="text-2xl font-bold text-appleDark" id="finalScoreText">0 / 10</div>
+                </div>
+                <div class="p-4 rounded-2xl bg-white/50 border border-white/80 shadow-sm">
+                    <div class="text-xs text-appleGray font-medium">Precisión</div>
+                    <div class="text-2xl font-bold text-appleBlue" id="finalAccuracyText">0%</div>
+                </div>
+                <div class="p-4 rounded-2xl bg-white/50 border border-white/80 shadow-sm">
+                    <div class="text-xs text-appleGray font-medium">Mejor Racha</div>
+                    <div class="text-2xl font-bold text-amber-500" id="finalStreakText">0 🔥</div>
+                </div>
+                <div class="p-4 rounded-2xl bg-white/50 border border-white/80 shadow-sm">
+                    <div class="text-xs text-appleGray font-medium">Tiempo Total</div>
+                    <div class="text-2xl font-bold font-mono text-emerald-600" id="finalTimeText">00:00.00</div>
+                </div>
+            </div>
+
+            <!-- Detailed Answer Review List -->
+            <div class="text-left space-y-2">
+                <h3 class="text-xs font-semibold uppercase text-appleGray tracking-wider ml-1">Revisión de Respuestas</h3>
+                <div id="summaryList" class="max-h-48 overflow-y-auto space-y-1.5 pr-1">
+                    <!-- Dynamic review items -->
+                </div>
+            </div>
+
+            <!-- Buttons -->
+            <div class="grid grid-cols-2 gap-3 pt-2">
+                <button onclick="resetToStart()" class="py-3.5 px-4 bg-gray-200/80 hover:bg-gray-300/80 text-appleDark font-semibold rounded-2xl transition-all text-sm">
+                    Menú Principal
+                </button>
+                <button onclick="startGame()" class="py-3.5 px-4 bg-appleBlue hover:bg-appleBlueHover text-white font-semibold rounded-2xl shadow-md transition-all text-sm">
+                    Jugar de Nuevo
                 </button>
             </div>
-        </section>
-
+        </div>
     </main>
 
-
-    <!-- LEADERBOARD MODAL -->
-    <div id="modal-leaderboard" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-xl animate-fadeIn">
-        <div class="liquid-glass rounded-3xl w-full max-w-xl p-6 space-y-5 border border-white/20 shadow-2xl relative max-h-[90vh] flex flex-col">
-            
-            <!-- Header -->
-            <div class="flex justify-between items-center border-b border-white/10 pb-3">
-                <div class="flex items-center space-x-2 text-amber-400">
-                    <i class="fa-solid fa-trophy text-xl"></i>
-                    <h3 class="text-lg font-bold text-white">Tabla de Clasificación</h3>
+    <!-- Leaderboard Modal -->
+    <div id="leaderboardModal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/30 backdrop-blur-md">
+        <div class="w-full max-w-lg liquid-glass rounded-[32px] p-6 sm:p-8 space-y-5 shadow-2xl relative max-h-[85vh] flex flex-col">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center space-x-2">
+                    <i class="fas fa-trophy text-amber-500 text-xl"></i>
+                    <h2 class="text-xl font-bold text-appleDark">Tabla de Clasificación</h2>
                 </div>
-                <button onclick="closeLeaderboardModal()" class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center text-white/60 hover:text-white">
-                    <i class="fa-solid fa-xmark"></i>
+                <button onclick="toggleLeaderboardModal(false)" class="w-8 h-8 rounded-full bg-gray-200/60 hover:bg-gray-300 flex items-center justify-center text-appleDark transition-colors">
+                    <i class="fas fa-times text-sm"></i>
                 </button>
             </div>
 
-            <!-- Mode Tabs -->
-            <div class="flex space-x-1 bg-black/40 p-1 rounded-xl overflow-x-auto text-xs shrink-0">
-                <button id="tab-lb-speedrun" onclick="switchLeaderboardTab('speedrun')" class="px-3 py-1.5 rounded-lg font-medium transition-all text-white bg-blue-600">197 Speedrun</button>
-                <button id="tab-lb-10" onclick="switchLeaderboardTab('10')" class="px-3 py-1.5 rounded-lg font-medium transition-all text-white/60 hover:text-white">10 Banderas</button>
-                <button id="tab-lb-20" onclick="switchLeaderboardTab('20')" class="px-3 py-1.5 rounded-lg font-medium transition-all text-white/60 hover:text-white">20 Banderas</button>
-                <button id="tab-lb-time" onclick="switchLeaderboardTab('time')" class="px-3 py-1.5 rounded-lg font-medium transition-all text-white/60 hover:text-white">Contrarreloj</button>
-                <button id="tab-lb-survival" onclick="switchLeaderboardTab('survival')" class="px-3 py-1.5 rounded-lg font-medium transition-all text-white/60 hover:text-white">Supervivencia</button>
+            <!-- Mode Tabs for Leaderboard -->
+            <div class="flex space-x-1 bg-gray-200/60 p-1 rounded-xl text-xs font-medium overflow-x-auto">
+                <button onclick="filterLeaderboard('10')" class="lb-tab active flex-1 py-1.5 px-2 rounded-lg text-center transition-all bg-white shadow-sm font-semibold text-appleDark" data-lbmode="10">10</button>
+                <button onclick="filterLeaderboard('20')" class="lb-tab flex-1 py-1.5 px-2 rounded-lg text-center transition-all text-appleGray" data-lbmode="20">20</button>
+                <button onclick="filterLeaderboard('197')" class="lb-tab flex-1 py-1.5 px-2 rounded-lg text-center transition-all text-appleGray" data-lbmode="197">197 Speedrun</button>
+                <button onclick="filterLeaderboard('survival')" class="lb-tab flex-1 py-1.5 px-2 rounded-lg text-center transition-all text-appleGray" data-lbmode="survival">Supervivencia</button>
+                <button onclick="filterLeaderboard('timeattack')" class="lb-tab flex-1 py-1.5 px-2 rounded-lg text-center transition-all text-appleGray" data-lbmode="timeattack">Contrarreloj</button>
             </div>
 
-            <!-- Rankings List -->
-            <div id="leaderboard-list-container" class="flex-1 overflow-y-auto space-y-2 pr-1">
-                <!-- JS will render leaderboard rows here -->
+            <!-- Records List -->
+            <div id="leaderboardContent" class="flex-1 overflow-y-auto space-y-2 pr-1 min-h-[220px]">
+                <!-- Dynamic ranking items -->
             </div>
 
-            <div class="pt-2 border-t border-white/10 flex justify-between items-center text-xs text-white/40">
-                <span>Ordenado por mejor tiempo en Speedrun</span>
-                <button onclick="clearLeaderboardData()" class="text-red-400/60 hover:text-red-400">Limpiar Registros</button>
+            <div class="pt-2 text-center">
+                <button onclick="clearLeaderboard()" class="text-xs text-red-500 hover:underline">
+                    Borrar Histórico Local
+                </button>
             </div>
         </div>
     </div>
 
-
-    <!-- GITHUB PAGES GUIDE MODAL -->
-    <div id="modal-help" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-xl animate-fadeIn">
-        <div class="liquid-glass rounded-3xl w-full max-w-lg p-6 space-y-5 border border-white/20 shadow-2xl relative max-h-[85vh] overflow-y-auto">
-            
-            <div class="flex justify-between items-center border-b border-white/10 pb-3">
-                <div class="flex items-center space-x-2 text-sky-400">
-                    <i class="fa-solid fa-rocket text-xl"></i>
-                    <h3 class="text-lg font-bold text-white">Despliegue en GitHub Pages</h3>
-                </div>
-                <button onclick="closeHelpModal()" class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center text-white/60 hover:text-white">
-                    <i class="fa-solid fa-xmark"></i>
-                </button>
-            </div>
-
-            <div class="space-y-4 text-xs text-white/80 leading-relaxed">
-                <p>Este juego está optimizado en un <strong>único archivo autodidáctico</strong> listo para publicarse gratis en GitHub Pages.</p>
-
-                <div class="space-y-2">
-                    <div class="flex items-start gap-3 bg-white/5 p-3 rounded-2xl border border-white/10">
-                        <span class="w-6 h-6 rounded-full bg-sky-500/20 text-sky-300 flex items-center justify-center font-bold text-xs shrink-0">1</span>
-                        <div>
-                            <strong class="text-white block">Crea tu repositorio GitHub</strong>
-                            Crea un repositorio nuevo en GitHub (ej. <code>adivina-bandera-game</code>) en modo Público.
-                        </div>
-                    </div>
-
-                    <div class="flex items-start gap-3 bg-white/5 p-3 rounded-2xl border border-white/10">
-                        <span class="w-6 h-6 rounded-full bg-sky-500/20 text-sky-300 flex items-center justify-center font-bold text-xs shrink-0">2</span>
-                        <div>
-                            <strong class="text-white block">Sube este archivo index.html</strong>
-                            Sube directamente este archivo con el nombre exacto <code>index.html</code> a la raíz del repositorio.
-                        </div>
-                    </div>
-
-                    <div class="flex items-start gap-3 bg-white/5 p-3 rounded-2xl border border-white/10">
-                        <span class="w-6 h-6 rounded-full bg-sky-500/20 text-sky-300 flex items-center justify-center font-bold text-xs shrink-0">3</span>
-                        <div>
-                            <strong class="text-white block">Activa GitHub Pages</strong>
-                            Ve a <strong>Settings &gt; Pages</strong> en tu repositorio. Selecciona la rama <code>main</code> y carpeta <code>/ (root)</code>, luego pulsa <strong>Save</strong>.
-                        </div>
-                    </div>
-                </div>
-
-                <div class="p-3 bg-blue-500/10 border border-blue-500/30 rounded-2xl text-sky-200 text-center">
-                    🌐 ¡Tu juego estará vivo en pocos segundos en <code>https://tu-usuario.github.io/adivina-bandera-game/</code>!
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-    <!-- FOOTER -->
-    <footer class="w-full max-w-2xl text-center py-4 text-[11px] text-white/30 z-10">
-        Diseño Apple Liquid Glass & Dynamic Island • Base de datos de 197 Países • 2026
+    <!-- Footer -->
+    <footer class="w-full text-center text-xs text-appleGray py-3">
+        Diseñado con la estética <span class="font-semibold text-appleDark">Apple Liquid Glass</span> • 197 Países de las Naciones Unidas
     </footer>
 
-
     <script>
-        /* ==========================================================================
-           1. COMPLETE DATABASE OF 197 COUNTRIES & ALIASES
-           (193 UN Members + Vatican, Palestine, Taiwan, Kosovo)
-           ========================================================================== */
-        const COUNTRIES_DB = [
-            { code: "af", name: "Afganistán", alt: ["afganistan", "afghanistan"] },
-            { code: "al", name: "Albania", alt: ["albania"] },
-            { code: "de", name: "Alemania", alt: ["germany", "deutschland"] },
-            { code: "ad", name: "Andorra", alt: ["andorra"] },
-            { code: "ao", name: "Angola", alt: ["angola"] },
-            { code: "ag", name: "Antigua y Barbuda", alt: ["antigua barbuda", "antigua"] },
-            { code: "sa", name: "Arabia Saudita", alt: ["arabia saudi", "saudi arabia"] },
-            { code: "dz", name: "Argelia", alt: ["algeria"] },
-            { code: "ar", name: "Argentina", alt: ["argentina"] },
-            { code: "am", name: "Armenia", alt: ["armenia"] },
-            { code: "au", name: "Australia", alt: ["australia"] },
-            { code: "at", name: "Austria", alt: ["austria"] },
-            { code: "az", name: "Azerbaiyán", alt: ["azerbaiyan", "azerbaijan"] },
-            { code: "bs", name: "Bahamas", alt: ["bahamas"] },
-            { code: "bd", name: "Bangladés", alt: ["bangladesh"] },
-            { code: "bb", name: "Barbados", alt: ["barbados"] },
-            { code: "bh", name: "Baréin", alt: ["barein", "bahrein", "bahrain"] },
-            { code: "be", name: "Bélgica", alt: ["belgica", "belgium"] },
-            { code: "bz", name: "Belice", alt: ["belize"] },
-            { code: "bj", name: "Benín", alt: ["benin"] },
-            { code: "by", name: "Bielorrusia", alt: ["bielorrusia", "belarus"] },
-            { code: "mm", name: "Birmania", alt: ["mianmar", "myanmar", "birmania"] },
-            { code: "bo", name: "Bolivia", alt: ["bolivia"] },
-            { code: "ba", name: "Bosnia y Herzegovina", alt: ["bosnia", "bosnia herzegovina"] },
-            { code: "bw", name: "Botsuana", alt: ["botswana", "botsuana"] },
-            { code: "br", name: "Brasil", alt: ["brazil", "brasil"] },
-            { code: "bn", name: "Brunéi", alt: ["brunei"] },
-            { code: "bg", name: "Bulgaria", alt: ["bulgaria"] },
-            { code: "bf", name: "Burkina Faso", alt: ["burkina"] },
-            { code: "bi", name: "Burundi", alt: ["burundi"] },
-            { code: "bt", name: "Bután", alt: ["butan", "bhutan"] },
-            { code: "cv", name: "Cabo Verde", alt: ["cabo verde", "cape verde"] },
-            { code: "kh", name: "Camboya", alt: ["cambodia", "camboya"] },
-            { code: "cm", name: "Camerún", alt: ["camerun", "cameroon"] },
-            { code: "ca", name: "Canadá", alt: ["canada"] },
-            { code: "qa", name: "Catar", alt: ["qatar", "catar"] },
-            { code: "td", name: "Chad", alt: ["chad"] },
-            { code: "cl", name: "Chile", alt: ["chile"] },
-            { code: "cn", name: "China", alt: ["china"] },
-            { code: "cy", name: "Chipre", alt: ["cyprus", "chipre"] },
-            { code: "co", name: "Colombia", alt: ["colombia"] },
-            { code: "km", name: "Comoras", alt: ["comoras", "comoros"] },
-            { code: "cg", name: "Congo", alt: ["congo", "republica del congo"] },
-            { code: "cd", name: "República Democrática del Congo", alt: ["rd congo", "congo democratico", "drc"] },
-            { code: "kp", name: "Corea del Norte", alt: ["corea del norte", "north korea"] },
-            { code: "kr", name: "Corea del Sur", alt: ["corea del sur", "south korea", "korea"] },
-            { code: "ci", name: "Costa de Marfil", alt: ["costa de marfil", "ivory coast", "cotte d'ivoire"] },
-            { code: "cr", name: "Costa Rica", alt: ["costa rica"] },
-            { code: "hr", name: "Croacia", alt: ["croatia", "croacia"] },
-            { code: "cu", name: "Cuba", alt: ["cuba"] },
-            { code: "dk", name: "Dinamarca", alt: ["denmark", "dinamarca"] },
-            { code: "dm", name: "Dominica", alt: ["dominica"] },
-            { code: "ec", name: "Ecuador", alt: ["ecuador"] },
-            { code: "eg", name: "Egipto", alt: ["egypt", "egipto"] },
-            { code: "sv", name: "El Salvador", alt: ["el salvador", "salvador"] },
-            { code: "ae", name: "Emiratos Árabes Unidos", alt: ["eau", "uae", "emiratos arabes", "dubai"] },
-            { code: "er", name: "Eritrea", alt: ["eritrea"] },
-            { code: "sk", name: "Eslovaquia", alt: ["slovakia", "eslovaquia"] },
-            { code: "si", name: "Eslovenia", alt: ["slovenia", "eslovenia"] },
-            { code: "es", name: "España", alt: ["spain", "espana"] },
-            { code: "us", name: "Estados Unidos", alt: ["eeuu", "ee.uu.", "usa", "united states"] },
-            { code: "ee", name: "Estonia", alt: ["estonia"] },
-            { code: "sz", name: "Eswatini", alt: ["esuatini", "suazilandia", "swaziland"] },
-            { code: "et", name: "Etiopía", alt: ["etiopia", "ethiopia"] },
-            { code: "ph", name: "Filipinas", alt: ["philippines", "filipinas"] },
-            { code: "fi", name: "Finlandia", alt: ["finland", "finlandia"] },
-            { code: "fj", name: "Fiyi", alt: ["fiji", "fiyi"] },
-            { code: "fr", name: "Francia", alt: ["france", "francia"] },
-            { code: "ga", name: "Gabón", alt: ["gabon"] },
-            { code: "gm", name: "Gambia", alt: ["gambia"] },
-            { code: "ge", name: "Georgia", alt: ["georgia"] },
-            { code: "gh", name: "Ghana", alt: ["ghana"] },
-            { code: "gd", name: "Granada", alt: ["grenada", "granada"] },
-            { code: "gr", name: "Grecia", alt: ["greece", "grecia"] },
-            { code: "gt", name: "Guatemala", alt: ["guatemala"] },
-            { code: "gn", name: "Guinea", alt: ["guinea"] },
-            { code: "gw", name: "Guinea-Bisáu", alt: ["guinea bisau", "guinea bissau"] },
-            { code: "gq", name: "Guinea Ecuatorial", alt: ["equatorial guinea"] },
-            { code: "gy", name: "Guyana", alt: ["guyana"] },
-            { code: "ht", name: "Haití", alt: ["haiti"] },
-            { code: "hn", name: "Honduras", alt: ["honduras"] },
-            { code: "hu", name: "Hungría", alt: ["hungary", "hungria"] },
-            { code: "in", name: "India", alt: ["india"] },
-            { code: "id", name: "Indonesia", alt: ["indonesia"] },
-            { code: "iq", name: "Irak", alt: ["iraq", "irak"] },
-            { code: "ir", name: "Irán", alt: ["iran"] },
-            { code: "ie", name: "Irlanda", alt: ["ireland", "irlanda"] },
-            { code: "is", name: "Islandia", alt: ["iceland", "islandia"] },
-            { code: "il", name: "Israel", alt: ["israel"] },
-            { code: "it", name: "Italia", alt: ["italy", "italia"] },
-            { code: "jm", name: "Jamaica", alt: ["jamaica"] },
-            { code: "jp", name: "Japón", alt: ["japan", "japon"] },
-            { code: "jo", name: "Jordania", alt: ["jordan", "jordania"] },
-            { code: "kz", name: "Kazajistán", alt: ["kazakhstan", "kazajistan"] },
-            { code: "ke", name: "Kenia", alt: ["kenya", "kenia"] },
-            { code: "kg", name: "Kirguistán", alt: ["kyrgyzstan", "kirguistan"] },
-            { code: "ki", name: "Kiribati", alt: ["kiribati"] },
-            { code: "xk", name: "Kosovo", alt: ["kosovo"] },
-            { code: "kw", name: "Kuwait", alt: ["kuwait"] },
-            { code: "la", name: "Laos", alt: ["laos"] },
-            { code: "ls", name: "Lesoto", alt: ["lesotho", "lesoto"] },
-            { code: "lv", name: "Letonia", alt: ["latvia", "letonia"] },
-            { code: "lb", name: "Líbano", alt: ["lebanon", "libano"] },
-            { code: "lr", name: "Liberia", alt: ["liberia"] },
-            { code: "ly", name: "Libia", alt: ["libya", "libia"] },
-            { code: "li", name: "Liechtenstein", alt: ["liechtenstein"] },
-            { code: "lt", name: "Lituania", alt: ["lithuania", "lituania"] },
-            { code: "lu", name: "Luxemburgo", alt: ["luxembourg", "luxemburgo"] },
-            { code: "mk", name: "Macedonia del Norte", alt: ["macedonia", "north macedonia"] },
-            { code: "mg", name: "Madagascar", alt: ["madagascar"] },
-            { code: "my", name: "Malasia", alt: ["malaysia", "malasia"] },
-            { code: "mw", name: "Malaui", alt: ["malawi", "malaui"] },
-            { code: "mv", name: "Maldivas", alt: ["maldives", "maldivas"] },
-            { code: "ml", name: "Malí", alt: ["mali"] },
-            { code: "mt", name: "Malta", alt: ["malta"] },
-            { code: "ma", name: "Marruecos", alt: ["morocco", "marruecos"] },
-            { code: "mu", name: "Mauricio", alt: ["mauritius", "mauricio"] },
-            { code: "mr", name: "Mauritania", alt: ["mauritania"] },
-            { code: "mx", name: "México", alt: ["mexico"] },
-            { code: "fm", name: "Micronesia", alt: ["micronesia"] },
-            { code: "md", name: "Moldavia", alt: ["moldova", "moldavia"] },
-            { code: "mc", name: "Mónaco", alt: ["monaco"] },
-            { code: "mn", name: "Mongolia", alt: ["mongolia"] },
-            { code: "me", name: "Montenegro", alt: ["montenegro"] },
-            { code: "mz", name: "Mozambique", alt: ["mozambique"] },
-            { code: "na", name: "Namibia", alt: ["namibia"] },
-            { code: "nr", name: "Nauru", alt: ["nauru"] },
-            { code: "np", name: "Nepal", alt: ["nepal"] },
-            { code: "ni", name: "Nicaragua", alt: ["nicaragua"] },
-            { code: "ne", name: "Níger", alt: ["niger"] },
-            { code: "ng", name: "Nigeria", alt: ["nigeria"] },
-            { code: "no", name: "Noruega", alt: ["norway", "noruega"] },
-            { code: "nz", name: "Nueva Zelanda", alt: ["new zealand", "nueva zelanda"] },
-            { code: "om", name: "Omán", alt: ["oman"] },
-            { code: "nl", name: "Países Bajos", alt: ["holanda", "paises bajos", "netherlands"] },
-            { code: "pk", name: "Pakistán", alt: ["pakistan"] },
-            { code: "pw", name: "Palau", alt: ["palau", "palaos"] },
-            { code: "ps", name: "Palestina", alt: ["palestine", "palestina"] },
-            { code: "pa", name: "Panamá", alt: ["panama"] },
-            { code: "pg", name: "Papúa Nueva Guinea", alt: ["papua new guinea", "papua nueva guinea"] },
-            { code: "py", name: "Paraguay", alt: ["paraguay"] },
-            { code: "pe", name: "Perú", alt: ["peru"] },
-            { code: "pl", name: "Polonia", alt: ["poland", "polonia"] },
-            { code: "pt", name: "Portugal", alt: ["portugal"] },
-            { code: "gb", name: "Reino Unido", alt: ["uk", "inglaterra", "reino unido", "united kingdom"] },
-            { code: "cf", name: "República Centroafricana", alt: ["centroafrica"] },
-            { code: "cz", name: "República Checa", alt: ["chequia", "czech republic", "czechia"] },
-            { code: "do", name: "República Dominicana", alt: ["dominican republic"] },
-            { code: "rw", name: "Ruanda", alt: ["rwanda", "ruanda"] },
-            { code: "ro", name: "Rumanía", alt: ["romania", "rumania"] },
-            { code: "ru", name: "Rusia", alt: ["russia", "federacion rusa"] },
-            { code: "ws", name: "Samoa", alt: ["samoa"] },
-            { code: "kn", name: "San Cristóbal y Nieves", alt: ["saint kitts"] },
-            { code: "sm", name: "San Marino", alt: ["san marino"] },
-            { code: "vc", name: "San Vicente y las Granadinas", alt: ["saint vincent"] },
-            { code: "lc", name: "Santa Lucía", alt: ["saint lucia", "santa lucia"] },
-            { code: "st", name: "Santo Tomé y Príncipe", alt: ["sao tome"] },
-            { code: "sn", name: "Senegal", alt: ["senegal"] },
-            { code: "rs", name: "Serbia", alt: ["serbia"] },
-            { code: "sc", name: "Seychelles", alt: ["seychelles"] },
-            { code: "sl", name: "Sierra Leona", alt: ["sierra leone"] },
-            { code: "sg", name: "Singapur", alt: ["singapore", "singapur"] },
-            { code: "sy", name: "Siria", alt: ["syria", "siria"] },
-            { code: "so", name: "Somalia", alt: ["somalia"] },
-            { code: "lk", name: "Sri Lanka", alt: ["sri lanka"] },
-            { code: "za", name: "Sudáfrica", alt: ["south africa", "sudafrica"] },
-            { code: "sd", name: "Sudán", alt: ["sudan"] },
-            { code: "ss", name: "Sudán del Sur", alt: ["south sudan", "sudan del sur"] },
-            { code: "se", name: "Suecia", alt: ["sweden", "suecia"] },
-            { code: "ch", name: "Suiza", alt: ["switzerland", "suiza"] },
-            { code: "sr", name: "Surinam", alt: ["suriname", "surinam"] },
-            { code: "th", name: "Tailandia", alt: ["thailand", "tailandia"] },
-            { code: "tw", name: "Taiwán", alt: ["taiwan"] },
-            { code: "tz", name: "Tanzania", alt: ["tanzania"] },
-            { code: "tj", name: "Tayikistán", alt: ["tajikistan", "tayikistan"] },
-            { code: "tl", name: "Timor Oriental", alt: ["east timor"] },
-            { code: "tg", name: "Togo", alt: ["togo"] },
-            { code: "to", name: "Tonga", alt: ["tonga"] },
-            { code: "tt", name: "Trinidad y Tobago", alt: ["trinidad and tobago"] },
-            { code: "tn", name: "Túnez", alt: ["tunisia", "tunez"] },
-            { code: "tm", name: "Turkmenistán", alt: ["turkmenistan"] },
-            { code: "tr", name: "Turquía", alt: ["turkey", "turquia"] },
-            { code: "tv", name: "Tuvalu", alt: ["tuvalu"] },
-            { code: "ua", name: "Ucrania", alt: ["ukraine", "ucrania"] },
-            { code: "ug", name: "Uganda", alt: ["uganda"] },
-            { code: "uy", name: "Uruguay", alt: ["uruguay"] },
-            { code: "uz", name: "Uzbekistán", alt: ["uzbekistan"] },
-            { code: "vu", name: "Vanuatu", alt: ["vanuatu"] },
-            { code: "va", name: "Vaticano", alt: ["vatican", "vaticano", "santa sede"] },
-            { code: "ve", name: "Venezuela", alt: ["venezuela"] },
-            { code: "vn", name: "Vietnam", alt: ["vietnam"] },
-            { code: "ye", name: "Yemen", alt: ["yemen"] },
-            { code: "dj", name: "Yibuti", alt: ["djibouti", "yibuti"] },
-            { code: "zm", name: "Zambia", alt: ["zambia"] },
-            { code: "zw", name: "Zimbabue", alt: ["zimbabwe", "zimbabue"] }
+        /* Complete 197 UN member states + Vatican, Palestine, Taiwan, Kosovo dataset */
+        const ALL_COUNTRIES = [
+            { code: 'ad', name: 'Andorra', aliases: [] },
+            { code: 'ae', name: 'Emiratos Árabes Unidos', aliases: ['eeau', 'emiratos arabes', 'eau', 'uae'] },
+            { code: 'af', name: 'Afganistán', aliases: ['afganistan'] },
+            { code: 'ag', name: 'Antigua y Barbuda', aliases: [] },
+            { code: 'al', name: 'Albania', aliases: [] },
+            { code: 'am', name: 'Armenia', aliases: [] },
+            { code: 'ao', name: 'Angola', aliases: [] },
+            { code: 'ar', name: 'Argentina', aliases: [] },
+            { code: 'at', name: 'Austria', aliases: [] },
+            { code: 'au', name: 'Australia', aliases: [] },
+            { code: 'az', name: 'Azerbaiyán', aliases: ['azerbaijan'] },
+            { code: 'ba', name: 'Bosnia y Herzegovina', aliases: ['bosnia'] },
+            { code: 'bb', name: 'Barbados', aliases: [] },
+            { code: 'bd', name: 'Bangladés', aliases: ['bangladesh'] },
+            { code: 'be', name: 'Bélgica', aliases: ['belgica'] },
+            { code: 'bf', name: 'Burkina Faso', aliases: [] },
+            { code: 'bg', name: 'Bulgaria', aliases: [] },
+            { code: 'bh', name: 'Bahréin', aliases: ['bahrein', 'bahrain'] },
+            { code: 'bi', name: 'Burundi', aliases: [] },
+            { code: 'bj', name: 'Benín', aliases: ['benin'] },
+            { code: 'bn', name: 'Brunéi', aliases: ['brunei'] },
+            { code: 'bo', name: 'Bolivia', aliases: [] },
+            { code: 'br', name: 'Brasil', aliases: [] },
+            { code: 'bs', name: 'Bahamas', aliases: [] },
+            { code: 'bt', name: 'Bután', aliases: ['bhutan', 'butan'] },
+            { code: 'bw', name: 'Botsuana', aliases: ['botswana'] },
+            { code: 'by', name: 'Bielorrusia', aliases: ['belarus'] },
+            { code: 'bz', name: 'Belice', aliases: ['belize'] },
+            { code: 'ca', name: 'Canadá', aliases: ['canada'] },
+            { code: 'cd', name: 'República Democrática del Congo', aliases: ['rdc', 'congo democratico', 'rd congo'] },
+            { code: 'cf', name: 'República Centroafricana', aliases: ['centroafrica'] },
+            { code: 'cg', name: 'República del Congo', aliases: ['congo'] },
+            { code: 'ch', name: 'Suiza', aliases: ['switzerland'] },
+            { code: 'ci', name: 'Costa de Marfil', aliases: ['cote d ivoire'] },
+            { code: 'cl', name: 'Chile', aliases: [] },
+            { code: 'cm', name: 'Camerún', aliases: ['camerun'] },
+            { code: 'cn', name: 'China', aliases: [] },
+            { code: 'co', name: 'Colombia', aliases: [] },
+            { code: 'cr', name: 'Costa Rica', aliases: [] },
+            { code: 'cu', name: 'Cuba', aliases: [] },
+            { code: 'cv', name: 'Cabo Verde', aliases: [] },
+            { code: 'cy', name: 'Chipre', aliases: ['cyprus'] },
+            { code: 'cz', name: 'Chequia', aliases: ['república checa', 'republica checa', 'rep checa', 'czechia'] },
+            { code: 'de', name: 'Alemania', aliases: ['germany'] },
+            { code: 'dj', name: 'Yibuti', aliases: ['djibouti'] },
+            { code: 'dk', name: 'Dinamarca', aliases: ['denmark'] },
+            { code: 'dm', name: 'Dominica', aliases: [] },
+            { code: 'do', name: 'República Dominicana', aliases: ['rep dominicana'] },
+            { code: 'dz', name: 'Argelia', aliases: ['algeria'] },
+            { code: 'ec', name: 'Ecuador', aliases: [] },
+            { code: 'ee', name: 'Estonia', aliases: [] },
+            { code: 'eg', name: 'Egipto', aliases: ['egypt'] },
+            { code: 'er', name: 'Eritrea', aliases: [] },
+            { code: 'es', name: 'España', aliases: ['espana', 'spain'] },
+            { code: 'et', name: 'Etiopía', aliases: ['etiopia', 'ethiopia'] },
+            { code: 'fi', name: 'Finlandia', aliases: ['finland'] },
+            { code: 'fj', name: 'Fiyi', aliases: ['fiji'] },
+            { code: 'fm', name: 'Micronesia', aliases: [] },
+            { code: 'fr', name: 'Francia', aliases: ['france'] },
+            { code: 'ga', name: 'Gabón', aliases: ['gabon'] },
+            { code: 'gb', name: 'Reino Unido', aliases: ['uk', 'gran bretaña', 'inglaterra', 'united kingdom'] },
+            { code: 'gd', name: 'Granada', aliases: ['grenada'] },
+            { code: 'ge', name: 'Georgia', aliases: [] },
+            { code: 'gh', name: 'Ghana', aliases: [] },
+            { code: 'gm', name: 'Gambia', aliases: [] },
+            { code: 'gn', name: 'Guinea', aliases: [] },
+            { code: 'gq', name: 'Guinea Ecuatorial', aliases: [] },
+            { code: 'gr', name: 'Grecia', aliases: ['greece'] },
+            { code: 'gt', name: 'Guatemala', aliases: [] },
+            { code: 'gw', name: 'Guinea-Bisáu', aliases: ['guinea bissau'] },
+            { code: 'gy', name: 'Guyana', aliases: [] },
+            { code: 'hn', name: 'Honduras', aliases: [] },
+            { code: 'hr', name: 'Croacia', aliases: ['croatia'] },
+            { code: 'ht', name: 'Haití', aliases: ['haiti'] },
+            { code: 'hu', name: 'Hungría', aliases: ['hungria', 'hungary'] },
+            { code: 'id', name: 'Indonesia', aliases: [] },
+            { code: 'ie', name: 'Irlanda', aliases: ['ireland'] },
+            { code: 'il', name: 'Israel', aliases: [] },
+            { code: 'in', name: 'India', aliases: [] },
+            { code: 'iq', name: 'Irak', aliases: ['iraq'] },
+            { code: 'ir', name: 'Irán', aliases: ['iran'] },
+            { code: 'is', name: 'Islandia', aliases: ['iceland'] },
+            { code: 'it', name: 'Italia', aliases: ['italy'] },
+            { code: 'jm', name: 'Jamaica', aliases: [] },
+            { code: 'jo', name: 'Jordania', aliases: ['jordan'] },
+            { code: 'jp', name: 'Japón', aliases: ['japon', 'japan'] },
+            { code: 'ke', name: 'Kenia', aliases: ['kenya'] },
+            { code: 'kg', name: 'Kirguistán', aliases: ['kirguistan', 'kyrgyzstan'] },
+            { code: 'kh', name: 'Camboya', aliases: ['cambodia'] },
+            { code: 'ki', name: 'Kiribati', aliases: [] },
+            { code: 'km', name: 'Comoras', aliases: ['comores'] },
+            { code: 'kn', name: 'San Cristóbal y Nieves', aliases: ['san cristobal'] },
+            { code: 'kp', name: 'Corea del Norte', aliases: ['corea norte'] },
+            { code: 'kr', name: 'Corea del Sur', aliases: ['corea sur'] },
+            { code: 'kw', name: 'Kuwait', aliases: [] },
+            { code: 'kz', name: 'Kazajistán', aliases: ['kazajistan', 'kazakhstan'] },
+            { code: 'la', name: 'Laos', aliases: [] },
+            { code: 'lb', name: 'Líbano', aliases: ['libano', 'lebanon'] },
+            { code: 'lc', name: 'Santa Lucía', aliases: ['santa lucia'] },
+            { code: 'li', name: 'Liechtenstein', aliases: [] },
+            { code: 'lk', name: 'Sri Lanka', aliases: [] },
+            { code: 'lr', name: 'Liberia', aliases: [] },
+            { code: 'ls', name: 'Lesoto', aliases: ['lesotho'] },
+            { code: 'lt', name: 'Lituania', aliases: ['lithuania'] },
+            { code: 'lu', name: 'Luxemburgo', aliases: ['luxembourg'] },
+            { code: 'lv', name: 'Letonia', aliases: ['latvia'] },
+            { code: 'ly', name: 'Libia', aliases: ['libya'] },
+            { code: 'ma', name: 'Marruecos', aliases: ['morocco'] },
+            { code: 'mc', name: 'Mónaco', aliases: ['monaco'] },
+            { code: 'md', name: 'Moldavia', aliases: ['moldova'] },
+            { code: 'me', name: 'Montenegro', aliases: [] },
+            { code: 'mg', name: 'Madagascar', aliases: [] },
+            { code: 'mh', name: 'Islas Marshall', aliases: ['marshall'] },
+            { code: 'mk', name: 'Macedonia del Norte', aliases: ['macedonia'] },
+            { code: 'ml', name: 'Malí', aliases: ['mali'] },
+            { code: 'mm', name: 'Birmania', aliases: ['myanmar'] },
+            { code: 'mn', name: 'Mongolia', aliases: [] },
+            { code: 'mr', name: 'Mauritania', aliases: [] },
+            { code: 'mt', name: 'Malta', aliases: [] },
+            { code: 'mu', name: 'Mauricio', aliases: ['mauritius'] },
+            { code: 'mv', name: 'Maldivas', aliases: ['maldives'] },
+            { code: 'mw', name: 'Malaui', aliases: ['malawi'] },
+            { code: 'mx', name: 'México', aliases: ['mexico'] },
+            { code: 'my', name: 'Malasia', aliases: ['malaysia'] },
+            { code: 'mz', name: 'Mozambique', aliases: [] },
+            { code: 'na', name: 'Namibia', aliases: [] },
+            { code: 'ne', name: 'Níger', aliases: ['niger'] },
+            { code: 'ng', name: 'Nigeria', aliases: [] },
+            { code: 'ni', name: 'Nicaragua', aliases: [] },
+            { code: 'nl', name: 'Países Bajos', aliases: ['paises bajos', 'holanda', 'netherlands'] },
+            { code: 'no', name: 'Noruega', aliases: ['norway'] },
+            { code: 'np', name: 'Nepal', aliases: [] },
+            { code: 'nr', name: 'Nauru', aliases: [] },
+            { code: 'nz', name: 'Nueva Zelanda', aliases: ['nueva zelandia', 'new zealand'] },
+            { code: 'om', name: 'Omán', aliases: ['oman'] },
+            { code: 'pa', name: 'Panamá', aliases: ['panama'] },
+            { code: 'pe', name: 'Perú', aliases: ['peru'] },
+            { code: 'pg', name: 'Papúa Nueva Guinea', aliases: ['papua'] },
+            { code: 'ph', name: 'Filipinas', aliases: ['philippines'] },
+            { code: 'pk', name: 'Pakistán', aliases: ['pakistan'] },
+            { code: 'pl', name: 'Polonia', aliases: ['poland'] },
+            { code: 'ps', name: 'Palestina', aliases: ['palestine'] },
+            { code: 'pt', name: 'Portugal', aliases: [] },
+            { code: 'pw', name: 'Palaos', aliases: ['palau'] },
+            { code: 'py', name: 'Paraguay', aliases: [] },
+            { code: 'qa: Catar', name: 'Catar', aliases: ['qatar'] },
+            { code: 'ro', name: 'Rumanía', aliases: ['rumania', 'romania'] },
+            { code: 'rs', name: 'Serbia', aliases: [] },
+            { code: 'ru', name: 'Rusia', aliases: ['russia'] },
+            { code: 'rw', name: 'Ruanda', aliases: ['rwanda'] },
+            { code: 'sa', name: 'Arabia Saudita', aliases: ['arabia saudi', 'saudi arabia'] },
+            { code: 'sb', name: 'Islas Salomón', aliases: ['salomon'] },
+            { code: 'sc', name: 'Seychelles', aliases: [] },
+            { code: 'sd', name: 'Sudán', aliases: ['sudan'] },
+            { code: 'se', name: 'Suecia', aliases: ['sweden'] },
+            { code: 'sg', name: 'Singapur', aliases: ['singapore'] },
+            { code: 'si', name: 'Eslovenia', aliases: ['slovenia'] },
+            { code: 'sk', name: 'Eslovaquia', aliases: ['slovakia'] },
+            { code: 'sl', name: 'Sierra Leona', aliases: [] },
+            { code: 'sm', name: 'San Marino', aliases: [] },
+            { code: 'sn', name: 'Senegal', aliases: [] },
+            { code: 'so', name: 'Somalia', aliases: [] },
+            { code: 'sr', name: 'Surinam', aliases: ['suriname'] },
+            { code: 'ss', name: 'Sudán del Sur', aliases: ['sudan del sur'] },
+            { code: 'st', name: 'Santo Tomé y Príncipe', aliases: ['santo tome'] },
+            { code: 'sv', name: 'El Salvador', aliases: ['salvador'] },
+            { code: 'sy', name: 'Siria', aliases: ['syria'] },
+            { code: 'sz', name: 'Esuatini', aliases: ['suazilandia', 'swaziland'] },
+            { code: 'td', name: 'Chad', aliases: [] },
+            { code: 'tg', name: 'Togo', aliases: [] },
+            { code: 'th', name: 'Tailandia', aliases: ['thailand'] },
+            { code: 'tj', name: 'Tayikistán', aliases: ['tayikistan', 'tajikistan'] },
+            { code: 'tl', name: 'Timor Oriental', aliases: [] },
+            { code: 'tm', name: 'Turkmenistán', aliases: ['turkmenistan'] },
+            { code: 'tn', name: 'Túnez', aliases: ['tunez', 'tunisia'] },
+            { code: 'to', name: 'Tonga', aliases: [] },
+            { code: 'tr', name: 'Turquía', aliases: ['turquia', 'turkey'] },
+            { code: 'tt', name: 'Trinidad y Tobago', aliases: [] },
+            { code: 'tv', name: 'Tuvalu', aliases: [] },
+            { code: 'tw', name: 'Taiwán', aliases: ['taiwan'] },
+            { code: 'tz', name: 'Tanzania', aliases: [] },
+            { code: 'ua', name: 'Ucrania', aliases: ['ukraine'] },
+            { code: 'ug', name: 'Uganda', aliases: [] },
+            { code: 'us', name: 'Estados Unidos', aliases: ['eeuu', 'ee.uu.', 'usa', 'estados unidos de america'] },
+            { code: 'uy', name: 'Uruguay', aliases: [] },
+            { code: 'uz', name: 'Uzbekistán', aliases: ['uzbekistan'] },
+            { code: 'va', name: 'Vaticano', aliases: ['ciudad del vaticano'] },
+            { code: 'vc', name: 'San Vicente y las Granadinas', aliases: ['san vicente'] },
+            { code: 've', name: 'Venezuela', aliases: [] },
+            { code: 'vn', name: 'Vietnam', aliases: [] },
+            { code: 'vu', name: 'Vanuatu', aliases: [] },
+            { code: 'ws', name: 'Samoa', aliases: [] },
+            { code: 'xk', name: 'Kosovo', aliases: [] },
+            { code: 'ye', name: 'Yemen', aliases: [] },
+            { code: 'za', name: 'Sudáfrica', aliases: ['sudafrica', 'south africa'] },
+            { code: 'zm', name: 'Zambia', aliases: [] },
+            { code: 'zw', name: 'Zimbabue', aliases: ['zimbabwe'] }
         ];
 
-        /* ==========================================================================
-           2. GLOBAL STATE MANAGEMENT
-           ========================================================================== */
-        let gameState = {
-            playerName: "Jugador1",
-            mode: "speedrun", // "speedrun", "10", "20", "time", "survival"
-            questionsQueue: [],
-            currentQuestionIndex: 0,
+        let state = {
+            playerName: 'Jugador',
+            mode: '10',
+            flagList: [],
+            currentIndex: 0,
             score: 0,
             streak: 0,
-            bestStreak: 0,
+            maxStreak: 0,
             lives: 3,
-            timeRemaining: 60, // for time mode
-            startTime: 0,
-            elapsedMilliseconds: 0,
+            startTime: null,
+            elapsedTimeMs: 0,
             timerInterval: null,
+            timeAttackLeft: 60,
+            timeAttackInterval: null,
+            history: [],
             audioEnabled: true,
-            activeCountry: null,
-            leaderboardTab: "speedrun"
+            selectedSuggestionIndex: -1
         };
 
-        let autocompleteFocusIndex = -1;
-
-        /* ==========================================================================
-           3. WEB AUDIO API SYNTHESIZER (NO EXTERNAL MP3 DEPENDENCIES)
-           ========================================================================== */
+        // Web Audio API Synthesizer
         let audioCtx = null;
 
-        function initAudioContext() {
+        function getAudioContext() {
             if (!audioCtx) {
-                const AudioContextClass = window.AudioContext || window.webkitAudioContext;
-                if (AudioContextClass) audioCtx = new AudioContextClass();
+                audioCtx = new (window.AudioContext || window.webkitAudioContext)();
             }
-            if (audioCtx && audioCtx.state === 'suspended') {
+            if (audioCtx.state === 'suspended') {
                 audioCtx.resume();
+            }
+            return audioCtx;
+        }
+
+        function toggleAudio() {
+            state.audioEnabled = !state.audioEnabled;
+            const icon = document.getElementById('soundIcon');
+            if (state.audioEnabled) {
+                icon.className = 'fas fa-volume-up';
+                triggerIslandPulse('Sonido activado 🔊', 'neutral');
+            } else {
+                icon.className = 'fas fa-volume-mute';
+                triggerIslandPulse('Sonido silenciado 🔇', 'neutral');
             }
         }
 
         function playSound(type) {
-            if (!gameState.audioEnabled) return;
-            initAudioContext();
-            if (!audioCtx) return;
+            if (!state.audioEnabled) return;
+            try {
+                const ctx = getAudioContext();
+                const now = ctx.currentTime;
 
-            const now = audioCtx.currentTime;
-
-            if (type === 'correct') {
-                // High harmonic chime chord
-                const osc1 = audioCtx.createOscillator();
-                const osc2 = audioCtx.createOscillator();
-                const gain = audioCtx.createGain();
-
-                osc1.type = 'sine';
-                osc2.type = 'sine';
-
-                osc1.frequency.setValueAtTime(523.25, now); // C5
-                osc2.frequency.setValueAtTime(659.25, now); // E5
-
-                osc1.frequency.exponentialRampToValueAtTime(1046.50, now + 0.15); // C6
-
-                gain.gain.setValueAtTime(0.15, now);
-                gain.gain.exponentialRampToValueAtTime(0.001, now + 0.3);
-
-                osc1.connect(gain);
-                osc2.connect(gain);
-                gain.connect(audioCtx.destination);
-
-                osc1.start(now);
-                osc2.start(now);
-                osc1.stop(now + 0.3);
-                osc2.stop(now + 0.3);
-
-            } else if (type === 'wrong') {
-                // Low saw bass pulse
-                const osc = audioCtx.createOscillator();
-                const gain = audioCtx.createGain();
-
-                osc.type = 'sawtooth';
-                osc.frequency.setValueAtTime(160, now);
-                osc.frequency.linearRampToValueAtTime(90, now + 0.25);
-
-                gain.gain.setValueAtTime(0.2, now);
-                gain.gain.exponentialRampToValueAtTime(0.001, now + 0.25);
-
-                osc.connect(gain);
-                gain.connect(audioCtx.destination);
-
-                osc.start(now);
-                osc.stop(now + 0.25);
-
-            } else if (type === 'fanfare') {
-                // Winning arpeggio
-                const notes = [523.25, 659.25, 783.99, 1046.50];
-                notes.forEach((freq, idx) => {
-                    const osc = audioCtx.createOscillator();
-                    const gain = audioCtx.createGain();
-                    const startTime = now + (idx * 0.08);
-
-                    osc.type = 'triangle';
-                    osc.frequency.setValueAtTime(freq, startTime);
-
-                    gain.gain.setValueAtTime(0.15, startTime);
-                    gain.gain.exponentialRampToValueAtTime(0.001, startTime + 0.25);
-
+                if (type === 'correct') {
+                    const osc = ctx.createOscillator();
+                    const gain = ctx.createGain();
+                    osc.type = 'sine';
+                    osc.frequency.setValueAtTime(523.25, now); // C5
+                    osc.frequency.exponentialRampToValueAtTime(659.25, now + 0.12); // E5
+                    gain.gain.setValueAtTime(0.15, now);
+                    gain.gain.exponentialRampToValueAtTime(0.01, now + 0.25);
                     osc.connect(gain);
-                    gain.connect(audioCtx.destination);
-
-                    osc.start(startTime);
-                    osc.stop(startTime + 0.25);
-                });
+                    gain.connect(ctx.destination);
+                    osc.start(now);
+                    osc.stop(now + 0.25);
+                } else if (type === 'wrong') {
+                    const osc = ctx.createOscillator();
+                    const gain = ctx.createGain();
+                    osc.type = 'sawtooth';
+                    osc.frequency.setValueAtTime(180, now);
+                    osc.frequency.linearRampToValueAtTime(110, now + 0.2);
+                    gain.gain.setValueAtTime(0.2, now);
+                    gain.gain.exponentialRampToValueAtTime(0.01, now + 0.25);
+                    osc.connect(gain);
+                    gain.connect(ctx.destination);
+                    osc.start(now);
+                    osc.stop(now + 0.25);
+                } else if (type === 'finish') {
+                    const notes = [523.25, 659.25, 783.99, 1046.50];
+                    notes.forEach((freq, idx) => {
+                        const osc = ctx.createOscillator();
+                        const gain = ctx.createGain();
+                        osc.type = 'triangle';
+                        osc.frequency.value = freq;
+                        gain.gain.setValueAtTime(0.15, now + idx * 0.1);
+                        gain.gain.exponentialRampToValueAtTime(0.001, now + idx * 0.1 + 0.3);
+                        osc.connect(gain);
+                        gain.connect(ctx.destination);
+                        osc.start(now + idx * 0.1);
+                        osc.stop(now + idx * 0.1 + 0.3);
+                    });
+                }
+            } catch (e) {
+                console.warn('Audio not allowed or supported yet.', e);
             }
         }
 
-        function toggleAudio() {
-            gameState.audioEnabled = !gameState.audioEnabled;
-            const btn = document.getElementById('btn-audio');
-            const drawerBtn = document.getElementById('drawer-audio-btn');
-            
-            if (gameState.audioEnabled) {
-                btn.innerHTML = `<i class="fa-solid fa-volume-high"></i>`;
-                drawerBtn.innerText = "🔊 Activado";
-                playSound('correct');
-            } else {
-                btn.innerHTML = `<i class="fa-solid fa-volume-xmark text-red-400"></i>`;
-                drawerBtn.innerText = "🔇 Silenciado";
-            }
+        function normalizeStr(str) {
+            return (str || '')
+                .toLowerCase()
+                .trim()
+                .normalize("NFD")
+                .replace(/[\u0300-\u036f]/g, "")
+                .replace(/[^a-z0-9 ]/g, "");
         }
 
+        function isCorrectMatch(input, country) {
+            const cleanInput = normalizeStr(input);
+            if (!cleanInput) return false;
 
-        /* ==========================================================================
-           4. DYNAMIC ISLAND CONTROLLER
-           ========================================================================== */
-        function updateDynamicIsland(title, timeText, badgeText, glowType = null) {
-            const island = document.getElementById('dynamic-island');
-            const islandTitle = document.getElementById('island-title');
-            const islandTimer = document.getElementById('island-timer');
-            const islandBadge = document.getElementById('island-badge');
-            const islandIcon = document.getElementById('island-icon');
-            const islandDot = document.getElementById('island-dot');
+            const cleanName = normalizeStr(country.name);
+            if (cleanInput === cleanName) return true;
 
-            if (title) islandTitle.innerText = title;
-            if (timeText !== null) islandTimer.innerText = timeText;
-            if (badgeText !== null) islandBadge.innerText = badgeText;
-
-            // Handle Glow Pulses
-            island.classList.remove('glow-correct', 'glow-wrong');
-            if (glowType === 'correct') {
-                island.classList.add('glow-correct');
-                setTimeout(() => island.classList.remove('glow-correct'), 800);
-            } else if (glowType === 'wrong') {
-                island.classList.add('glow-wrong');
-                setTimeout(() => island.classList.remove('glow-wrong'), 800);
-            }
-
-            // Streak icon toggle
-            if (gameState.streak > 2) {
-                islandIcon.classList.remove('hidden');
-                islandDot.classList.add('hidden');
-            } else {
-                islandIcon.classList.add('hidden');
-                islandDot.classList.remove('hidden');
-            }
+            return country.aliases.some(alias => normalizeStr(alias) === cleanInput);
         }
 
-        function toggleIslandDrawer() {
-            const drawer = document.getElementById('island-drawer');
-            drawer.classList.toggle('hidden');
-            document.getElementById('drawer-player').innerText = gameState.playerName || "Invitado";
-            document.getElementById('drawer-streak').innerText = `${gameState.streak} 🔥`;
-        }
-
-
-        /* ==========================================================================
-           5. HELPER FUNCTIONS & STRING NORMALIZATION
-           ========================================================================== */
-        // Strip accents and diacritics
-        function cleanString(str) {
-            if (!str) return "";
-            return str.toString()
-                      .normalize("NFD")
-                      .replace(/[\u0300-\u036f]/g, "")
-                      .toLowerCase()
-                      .trim();
-        }
-
-        // Format milliseconds as mm:ss.SSS
-        function formatMilliseconds(ms) {
-            const totalSeconds = Math.floor(ms / 1000);
-            const minutes = Math.floor(totalSeconds / 60);
-            const seconds = totalSeconds % 60;
-            const millis = Math.floor(ms % 1000);
-
-            const mStr = String(minutes).padStart(2, '0');
-            const sStr = String(seconds).padStart(2, '0');
-            const msStr = String(millis).padStart(3, '0');
-
-            return `${mStr}:${sStr}.${msStr}`;
-        }
-
-        // Shuffle Array
-        function shuffleArray(arr) {
-            const array = [...arr];
-            for (let i = array.length - 1; i > 0; i--) {
+        function shuffleArray(array) {
+            const arr = [...array];
+            for (let i = arr.length - 1; i > 0; i--) {
                 const j = Math.floor(Math.random() * (i + 1));
-                [array[i], array[j]] = [array[j], array[i]];
+                [arr[i], arr[j]] = [arr[j], arr[i]];
             }
-            return array;
+            return arr;
         }
-
-
-        /* ==========================================================================
-           6. GAME INITIALIZATION & LIFECYCLE
-           ========================================================================== */
-        window.addEventListener('DOMContentLoaded', () => {
-            // Load saved player name
-            const savedName = localStorage.getItem('flag_game_player_name');
-            if (savedName) {
-                document.getElementById('player-name-input').value = savedName;
-                gameState.playerName = savedName;
-            }
-        });
 
         function selectMode(mode) {
-            const inputName = document.getElementById('player-name-input').value.trim();
-            if (!inputName) {
-                document.getElementById('player-name-input').focus();
-                document.getElementById('player-name-input').classList.add('shake-effect');
-                setTimeout(() => document.getElementById('player-name-input').classList.remove('shake-effect'), 500);
-                return;
-            }
-
-            gameState.playerName = inputName;
-            localStorage.setItem('flag_game_player_name', inputName);
-            gameState.mode = mode;
-
-            initGame();
-        }
-
-        function initGame() {
-            // Prepare queue of questions
-            let fullList = shuffleArray(COUNTRIES_DB);
-
-            if (gameState.mode === 'speedrun') {
-                gameState.questionsQueue = fullList; // All 197 countries
-            } else if (gameState.mode === '10') {
-                gameState.questionsQueue = fullList.slice(0, 10);
-            } else if (gameState.mode === '20') {
-                gameState.questionsQueue = fullList.slice(0, 20);
-            } else if (gameState.mode === 'time' || gameState.mode === 'survival') {
-                gameState.questionsQueue = fullList; // Infinite/large queue
-            }
-
-            gameState.currentQuestionIndex = 0;
-            gameState.score = 0;
-            gameState.streak = 0;
-            gameState.bestStreak = 0;
-            gameState.lives = 3;
-            gameState.timeRemaining = 60;
-            gameState.startTime = performance.now();
-            gameState.elapsedMilliseconds = 0;
-
-            // UI Setup
-            document.getElementById('view-setup').classList.add('hidden');
-            document.getElementById('view-summary').classList.add('hidden');
-            document.getElementById('view-game').classList.remove('hidden');
-
-            const modeLabel = document.getElementById('game-mode-label');
-            const livesDisplay = document.getElementById('game-lives-display');
-
-            if (gameState.mode === 'speedrun') modeLabel.innerText = "SPEEDRUN 197";
-            else if (gameState.mode === '10') modeLabel.innerText = "10 Banderas";
-            else if (gameState.mode === '20') modeLabel.innerText = "20 Banderas";
-            else if (gameState.mode === 'time') modeLabel.innerText = "Contrarreloj 60s";
-            else if (gameState.mode === 'survival') modeLabel.innerText = "Supervivencia 💀";
-
-            if (gameState.mode === 'survival') {
-                livesDisplay.classList.remove('hidden');
-                updateLivesUI();
-            } else {
-                livesDisplay.classList.add('hidden');
-            }
-
-            // Start Timer
-            if (gameState.timerInterval) clearInterval(gameState.timerInterval);
-            gameState.timerInterval = setInterval(updateTimer, 16); // ~60fps high precision update
-
-            loadQuestion();
-        }
-
-        function updateTimer() {
-            const now = performance.now();
-            gameState.elapsedMilliseconds = now - gameState.startTime;
-
-            if (gameState.mode === 'time') {
-                const remaining = Math.max(0, 60000 - gameState.elapsedMilliseconds);
-                const seconds = Math.ceil(remaining / 1000);
-                updateDynamicIsland("⏱️ Contrarreloj", `${seconds}s`, `${gameState.score} Pts`);
-                
-                if (remaining <= 0) {
-                    endGame();
+            state.mode = mode;
+            document.querySelectorAll('.mode-btn').forEach(btn => {
+                const btnMode = btn.getAttribute('data-mode');
+                const checkIcon = btn.querySelector('.check-icon');
+                if (btnMode === mode) {
+                    btn.classList.add('bg-white/70', 'border-blue-500/50', 'shadow-sm');
+                    btn.classList.remove('bg-white/40', 'border-gray-200/60');
+                    if (checkIcon) checkIcon.classList.remove('opacity-0');
+                } else {
+                    btn.classList.remove('bg-white/70', 'border-blue-500/50', 'shadow-sm');
+                    btn.classList.add('bg-white/40', 'border-gray-200/60');
+                    if (checkIcon) checkIcon.classList.add('opacity-0');
                 }
+            });
+        }
+
+        function triggerIslandPulse(message, status = 'neutral') {
+            const island = document.getElementById('dynamicIsland');
+            const text = document.getElementById('islandText');
+            
+            text.textContent = message;
+
+            if (status === 'success') {
+                island.classList.add('bg-emerald-600', 'scale-105');
+                setTimeout(() => island.classList.remove('bg-emerald-600', 'scale-105'), 700);
+            } else if (status === 'error') {
+                island.classList.add('bg-rose-600', 'scale-105');
+                setTimeout(() => island.classList.remove('bg-rose-600', 'scale-105'), 700);
             } else {
-                const formatted = formatMilliseconds(gameState.elapsedMilliseconds);
-                const progressText = `${gameState.currentQuestionIndex + 1}/${gameState.questionsQueue.length}`;
-                updateDynamicIsland("Adivina la Bandera", formatted, progressText);
+                island.classList.add('scale-105');
+                setTimeout(() => island.classList.remove('scale-105'), 300);
             }
         }
 
-        function loadQuestion() {
-            if (gameState.currentQuestionIndex >= gameState.questionsQueue.length) {
+        function startGame() {
+            const nameInput = document.getElementById('playerNameInput');
+            state.playerName = nameInput.value.trim() || 'Jugador';
+
+            state.score = 0;
+            state.streak = 0;
+            state.maxStreak = 0;
+            state.lives = 3;
+            state.currentIndex = 0;
+            state.history = [];
+            state.elapsedTimeMs = 0;
+            clearInterval(state.timerInterval);
+            clearInterval(state.timeAttackInterval);
+
+            // Configure dataset according to mode
+            const shuffled = shuffleArray(ALL_COUNTRIES);
+            if (state.mode === '10') {
+                state.flagList = shuffled.slice(0, 10);
+            } else if (state.mode === '20') {
+                state.flagList = shuffled.slice(0, 20);
+            } else if (state.mode === '197') {
+                state.flagList = shuffled; // All 197
+            } else if (state.mode === 'survival' || state.mode === 'timeattack') {
+                state.flagList = shuffled;
+            }
+
+            // Update UI elements
+            document.getElementById('startScreen').classList.add('hidden');
+            document.getElementById('summaryScreen').classList.add('hidden');
+            document.getElementById('gameScreen').classList.remove('hidden');
+
+            setupIslandForGame();
+
+            // Start Timers
+            state.startTime = Date.now();
+            state.timerInterval = setInterval(updateLiveTimer, 30);
+
+            if (state.mode === 'timeattack') {
+                state.timeAttackLeft = 60;
+                state.timeAttackInterval = setInterval(() => {
+                    state.timeAttackLeft--;
+                    document.getElementById('islandTimer').textContent = `${state.timeAttackLeft}s`;
+                    if (state.timeAttackLeft <= 0) {
+                        endGame();
+                    }
+                }, 1000);
+            }
+
+            renderCurrentFlag();
+        }
+
+        function setupIslandForGame() {
+            const modeBadge = document.getElementById('islandModeBadge');
+            const scoreEl = document.getElementById('islandScore');
+            const livesEl = document.getElementById('islandLives');
+            const timerEl = document.getElementById('islandTimer');
+
+            scoreEl.classList.remove('hidden');
+            livesEl.classList.add('hidden');
+            timerEl.classList.remove('hidden');
+
+            document.getElementById('scoreVal').textContent = '0';
+
+            if (state.mode === 'survival') {
+                livesEl.classList.remove('hidden');
+                document.getElementById('livesVal').textContent = '3';
+                modeBadge.textContent = 'Supervivencia';
+            } else if (state.mode === '197') {
+                modeBadge.textContent = '197 Speedrun';
+            } else if (state.mode === 'timeattack') {
+                modeBadge.textContent = 'Contrarreloj';
+            } else {
+                modeBadge.textContent = `${state.mode} Banderas`;
+            }
+
+            triggerIslandPulse('¡Partida iniciada! 🚀');
+        }
+
+        function updateLiveTimer() {
+            if (!state.startTime) return;
+            state.elapsedTimeMs = Date.now() - state.startTime;
+
+            if (state.mode !== 'timeattack') {
+                const minutes = Math.floor(state.elapsedTimeMs / 60000);
+                const seconds = Math.floor((state.elapsedTimeMs % 60000) / 1000);
+                const ms = Math.floor((state.elapsedTimeMs % 1000) / 10);
+
+                const fmtMin = String(minutes).padStart(2, '0');
+                const fmtSec = String(seconds).padStart(2, '0');
+                const fmtMs = String(ms).padStart(2, '0');
+
+                document.getElementById('islandTimer').textContent = `${fmtMin}:${fmtSec}.${fmtMs}`;
+            }
+        }
+
+        function renderCurrentFlag() {
+            if (state.currentIndex >= state.flagList.length) {
                 endGame();
                 return;
             }
 
-            const current = gameState.questionsQueue[gameState.currentQuestionIndex];
-            gameState.activeCountry = current;
+            const current = state.flagList[state.currentIndex];
+            const img = document.getElementById('flagImage');
+            const skeleton = document.getElementById('flagSkeleton');
+            const input = document.getElementById('countryInput');
 
-            // Clear Input and suggestions
-            const input = document.getElementById('country-input');
-            input.value = "";
+            skeleton.classList.remove('hidden');
+            img.src = `https://flagcdn.com/w320/${current.code.toLowerCase()}.png`;
+            img.onload = () => skeleton.classList.add('hidden');
+
+            input.value = '';
             closeAutocomplete();
-
-            // Set Flag Image
-            const flagImg = document.getElementById('flag-image');
-            const spinner = document.getElementById('flag-spinner');
-            spinner.classList.remove('hidden');
-
-            // FlagCDN 640px high quality flag URL
-            flagImg.src = `https://flagcdn.com/w640/${current.code}.png`;
-
-            // Update In-Game Stats Footer
-            document.getElementById('stat-progress').innerText = `${gameState.currentQuestionIndex + 1} / ${gameState.questionsQueue.length}`;
-            document.getElementById('stat-score').innerText = gameState.score;
-            document.getElementById('stat-streak').innerText = `${gameState.streak} 🔥`;
-
             input.focus();
-        }
 
-        function onFlagLoaded() {
-            document.getElementById('flag-spinner').classList.add('hidden');
-        }
+            // Counter update
+            const totalStr = (state.mode === 'survival' || state.mode === 'timeattack') ? '∞' : state.flagList.length;
+            document.getElementById('flagCounter').textContent = `Bandera ${state.currentIndex + 1} de ${totalStr}`;
 
-        function updateLivesUI() {
-            const livesContainer = document.getElementById('game-lives-display');
-            let hearts = "";
-            for (let i = 0; i < 3; i++) {
-                if (i < gameState.lives) {
-                    hearts += `<i class="fa-solid fa-heart text-red-400"></i>`;
-                } else {
-                    hearts += `<i class="fa-regular fa-heart text-white/20"></i>`;
-                }
+            // Progress Bar
+            let progressPct = 0;
+            if (state.mode === '10' || state.mode === '20' || state.mode === '197') {
+                progressPct = (state.currentIndex / state.flagList.length) * 100;
+            } else if (state.mode === 'timeattack') {
+                progressPct = ((60 - state.timeAttackLeft) / 60) * 100;
+            } else {
+                progressPct = Math.min(100, (state.currentIndex / 30) * 100);
             }
-            livesContainer.innerHTML = hearts;
+            document.getElementById('progressBar').style.width = `${progressPct}%`;
         }
 
+        function handleInputChange(val) {
+            const dropdown = document.getElementById('autocompleteDropdown');
+            const norm = normalizeStr(val);
 
-        /* ==========================================================================
-           7. SMART AUTOCOMPLETE & KEYBOARD ENGINE
-           ========================================================================== */
-        function onInputChange(val) {
-            const list = document.getElementById('autocomplete-list');
-            const query = cleanString(val);
-
-            if (!query || query.length < 1) {
+            if (!norm || norm.length < 1) {
                 closeAutocomplete();
                 return;
             }
 
             // Filter countries
-            const matches = COUNTRIES_DB.filter(c => {
-                const mainName = cleanString(c.name);
-                if (mainName.includes(query)) return true;
-                return c.alt.some(alias => cleanString(alias).includes(query));
-            }).slice(0, 6); // Top 6 suggestions
+            const matches = ALL_COUNTRIES.filter(c => {
+                const nameNorm = normalizeStr(c.name);
+                if (nameNorm.includes(norm)) return true;
+                return c.aliases.some(a => normalizeStr(a).includes(norm));
+            }).slice(0, 5); // Limit 5 suggestions
 
             if (matches.length === 0) {
                 closeAutocomplete();
                 return;
             }
 
-            autocompleteFocusIndex = -1;
-            list.innerHTML = "";
-            matches.forEach((c, idx) => {
-                const item = document.createElement('div');
-                item.className = "p-2.5 px-3 rounded-xl hover:bg-white/15 cursor-pointer text-xs flex items-center justify-between text-white/90 transition-colors";
-                item.setAttribute('data-index', idx);
-                item.setAttribute('data-name', c.name);
-                item.innerHTML = `
-                    <span class="font-medium">${c.name}</span>
-                    <span class="text-[10px] text-white/30 uppercase"><i class="fa-solid fa-circle-chevron-right"></i></span>
-                `;
-                item.onclick = () => {
-                    document.getElementById('country-input').value = c.name;
-                    closeAutocomplete();
-                    submitGuess();
-                };
-                list.appendChild(item);
-            });
+            state.selectedSuggestionIndex = -1;
+            dropdown.innerHTML = matches.map((c, idx) => `
+                <div class="suggestion-item px-4 py-3 cursor-pointer hover:bg-blue-50/80 transition-colors flex items-center justify-between text-sm text-appleDark font-medium"
+                     onclick="selectSuggestion('${c.name.replace(/'/g, "\\'")}')"
+                     data-index="${idx}">
+                    <span>${c.name}</span>
+                    <i class="fas fa-arrow-up-left text-xs text-appleGray"></i>
+                </div>
+            `).join('');
 
-            list.classList.remove('hidden');
+            dropdown.classList.remove('hidden');
         }
 
         function closeAutocomplete() {
-            const list = document.getElementById('autocomplete-list');
-            list.classList.add('hidden');
-            list.innerHTML = "";
-            autocompleteFocusIndex = -1;
+            const dropdown = document.getElementById('autocompleteDropdown');
+            dropdown.classList.add('hidden');
+            dropdown.innerHTML = '';
+            state.selectedSuggestionIndex = -1;
         }
 
-        function handleInputKeydown(e) {
-            const list = document.getElementById('autocomplete-list');
-            const items = list.getElementsByTagName('div');
+        function selectSuggestion(name) {
+            const input = document.getElementById('countryInput');
+            input.value = name;
+            closeAutocomplete();
+            submitCurrentAnswer();
+        }
 
-            if (e.key === 'ArrowDown') {
-                e.preventDefault();
-                if (items.length > 0) {
-                    autocompleteFocusIndex = (autocompleteFocusIndex + 1) % items.length;
-                    highlightAutocompleteItem(items);
-                }
-            } else if (e.key === 'ArrowUp') {
-                e.preventDefault();
-                if (items.length > 0) {
-                    autocompleteFocusIndex = (autocompleteFocusIndex - 1 + items.length) % items.length;
-                    highlightAutocompleteItem(items);
-                }
-            } else if (e.key === 'Enter') {
-                e.preventDefault();
-                if (autocompleteFocusIndex > -1 && items[autocompleteFocusIndex]) {
-                    const selectedName = items[autocompleteFocusIndex].getAttribute('data-name');
-                    document.getElementById('country-input').value = selectedName;
-                    closeAutocomplete();
-                    submitGuess();
-                } else {
-                    // Check if top match exists
-                    if (items.length > 0) {
-                        const topName = items[0].getAttribute('data-name');
-                        // If exact match or close match
-                        document.getElementById('country-input').value = topName;
+        function handleKeyDown(e) {
+            const dropdown = document.getElementById('autocompleteDropdown');
+            const items = dropdown.querySelectorAll('.suggestion-item');
+
+            if (!dropdown.classList.contains('hidden') && items.length > 0) {
+                if (e.key === 'ArrowDown') {
+                    e.preventDefault();
+                    state.selectedSuggestionIndex = (state.selectedSuggestionIndex + 1) % items.length;
+                    highlightSuggestion(items);
+                    return;
+                } else if (e.key === 'ArrowUp') {
+                    e.preventDefault();
+                    state.selectedSuggestionIndex = (state.selectedSuggestionIndex - 1 + items.length) % items.length;
+                    highlightSuggestion(items);
+                    return;
+                } else if (e.key === 'Enter') {
+                    e.preventDefault();
+                    if (state.selectedSuggestionIndex >= 0 && items[state.selectedSuggestionIndex]) {
+                        items[state.selectedSuggestionIndex].click();
+                        return;
                     }
+                } else if (e.key === 'Escape') {
                     closeAutocomplete();
-                    submitGuess();
+                    return;
                 }
-            } else if (e.key === 'Escape') {
-                closeAutocomplete();
+            }
+
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                submitCurrentAnswer();
             }
         }
 
-        function highlightAutocompleteItem(items) {
-            for (let i = 0; i < items.length; i++) {
-                if (i === autocompleteFocusIndex) {
-                    items[i].classList.add('bg-white/20', 'text-sky-300');
-                    items[i].scrollIntoView({ block: 'nearest' });
+        function highlightSuggestion(items) {
+            items.forEach((item, idx) => {
+                if (idx === state.selectedSuggestionIndex) {
+                    item.classList.add('bg-blue-100/90', 'text-appleBlue');
                 } else {
-                    items[i].classList.remove('bg-white/20', 'text-sky-300');
+                    item.classList.remove('bg-blue-100/90', 'text-appleBlue');
                 }
-            }
+            });
         }
 
+        function submitCurrentAnswer() {
+            const input = document.getElementById('countryInput');
+            const val = input.value.trim();
+            if (!val) return;
 
-        /* ==========================================================================
-           8. ANSWER EVALUATION & FEEDBACK
-           ========================================================================== */
-        function submitGuess() {
-            const input = document.getElementById('country-input');
-            const userGuess = cleanString(input.value);
+            const current = state.flagList[state.currentIndex];
+            const correct = isCorrectMatch(val, current);
 
-            if (!userGuess || !gameState.activeCountry) return;
+            recordAnswer(current, val, correct);
+        }
 
-            const targetName = cleanString(gameState.activeCountry.name);
-            const targetAliases = gameState.activeCountry.alt.map(a => cleanString(a));
+        function skipFlag() {
+            const current = state.flagList[state.currentIndex];
+            recordAnswer(current, 'Saltada', false);
+        }
 
-            const isCorrect = (userGuess === targetName) || targetAliases.includes(userGuess);
+        function recordAnswer(country, userText, correct) {
+            state.history.push({
+                country: country,
+                userAnswer: userText,
+                isCorrect: correct
+            });
 
-            const flagCard = document.getElementById('flag-card-container');
+            const gameCard = document.getElementById('gameScreen');
 
-            if (isCorrect) {
-                // Correct Answer
-                gameState.score++;
-                gameState.streak++;
-                if (gameState.streak > gameState.bestStreak) gameState.bestStreak = gameState.streak;
+            if (correct) {
+                state.score++;
+                state.streak++;
+                if (state.streak > state.maxStreak) state.maxStreak = state.streak;
 
+                document.getElementById('scoreVal').textContent = state.score;
                 playSound('correct');
-                updateDynamicIsland("¡CORRECTO! 🎉", null, null, 'correct');
-
-                // Visual flash on flag card
-                flagCard.classList.add('border-emerald-400');
-                setTimeout(() => flagCard.classList.remove('border-emerald-400'), 600);
-
+                triggerIslandPulse(`¡Correcto! ${country.name} 🎉`, 'success');
             } else {
-                // Wrong Answer
-                gameState.streak = 0;
+                state.streak = 0;
                 playSound('wrong');
-                updateDynamicIsland(`¡Era ${gameState.activeCountry.name}! ❌`, null, null, 'wrong');
+                gameCard.classList.add('animate-shake');
+                setTimeout(() => gameCard.classList.remove('animate-shake'), 400);
 
-                // Shake effect on card
-                flagCard.classList.add('shake-effect', 'border-red-500');
-                setTimeout(() => flagCard.classList.remove('shake-effect', 'border-red-500'), 600);
+                triggerIslandPulse(`¡Error! Era ${country.name} ❌`, 'error');
 
-                if (gameState.mode === 'survival') {
-                    gameState.lives--;
-                    updateLivesUI();
-                    if (gameState.lives <= 0) {
+                if (state.mode === 'survival') {
+                    state.lives--;
+                    document.getElementById('livesVal').textContent = state.lives;
+                    if (state.lives <= 0) {
                         setTimeout(endGame, 600);
                         return;
                     }
                 }
             }
 
-            gameState.currentQuestionIndex++;
-            setTimeout(loadQuestion, 500);
+            state.currentIndex++;
+            renderCurrentFlag();
         }
 
-
-        /* ==========================================================================
-           9. GAME OVER & RESULTS SUMMARY
-           ========================================================================== */
         function endGame() {
-            if (gameState.timerInterval) clearInterval(gameState.timerInterval);
+            clearInterval(state.timerInterval);
+            clearInterval(state.timeAttackInterval);
 
-            playSound('fanfare');
+            document.getElementById('gameScreen').classList.add('hidden');
+            document.getElementById('summaryScreen').classList.remove('hidden');
 
-            const totalPlayed = gameState.currentQuestionIndex;
-            const finalTimeFormatted = formatMilliseconds(gameState.elapsedMilliseconds);
-            const accuracy = totalPlayed > 0 ? Math.round((gameState.score / totalPlayed) * 100) : 0;
+            playSound('finish');
+            triggerConfetti();
 
-            // Switch to summary view
-            document.getElementById('view-game').classList.add('hidden');
-            document.getElementById('view-summary').classList.remove('hidden');
+            // Populate Summary
+            const totalPlayed = state.history.length;
+            const accuracy = totalPlayed > 0 ? Math.round((state.score / totalPlayed) * 100) : 0;
 
-            document.getElementById('sum-time').innerText = finalTimeFormatted;
-            document.getElementById('sum-score').innerText = `${gameState.score} / ${gameState.questionsQueue.length}`;
-            document.getElementById('sum-accuracy').innerText = `${accuracy}%`;
-            document.getElementById('sum-streak').innerText = `${gameState.bestStreak} 🔥`;
+            document.getElementById('finalScoreText').textContent = `${state.score} / ${totalPlayed}`;
+            document.getElementById('finalAccuracyText').textContent = `${accuracy}%`;
+            document.getElementById('finalStreakText').textContent = `${state.maxStreak} 🔥`;
 
-            // Dynamic island celebration
-            updateDynamicIsland("¡JUEGO COMPLETADO!", finalTimeFormatted, "🏆", 'correct');
+            const minutes = Math.floor(state.elapsedTimeMs / 60000);
+            const seconds = Math.floor((state.elapsedTimeMs % 60000) / 1000);
+            const ms = Math.floor((state.elapsedTimeMs % 1000) / 10);
+            const timeFormatted = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}.${String(ms).padStart(2, '0')}`;
+
+            document.getElementById('finalTimeText').textContent = timeFormatted;
+
+            // Render detailed review list
+            const reviewList = document.getElementById('summaryList');
+            reviewList.innerHTML = state.history.map(item => `
+                <div class="p-2.5 rounded-xl ${item.isCorrect ? 'bg-emerald-50 border border-emerald-200/60' : 'bg-rose-50 border border-rose-200/60'} flex items-center justify-between text-xs">
+                    <div class="flex items-center space-x-2.5 truncate">
+                        <img src="https://flagcdn.com/w40/${item.country.code.toLowerCase()}.png" class="w-6 h-4 object-cover rounded shadow-sm">
+                        <span class="font-semibold text-appleDark truncate">${item.country.name}</span>
+                    </div>
+                    <div class="text-right flex-shrink-0 ml-2">
+                        <span class="${item.isCorrect ? 'text-emerald-700 font-medium' : 'text-rose-600 font-medium'}">
+                            ${item.isCorrect ? '✓ ' + item.userAnswer : '✗ ' + (item.userAnswer || 'Sin respuesta')}
+                        </span>
+                    </div>
+                </div>
+            `).join('');
+
+            saveScoreToLeaderboard({
+                player: state.playerName,
+                mode: state.mode,
+                score: state.score,
+                total: totalPlayed,
+                accuracy: accuracy,
+                timeMs: state.elapsedTimeMs,
+                timeFormatted: timeFormatted,
+                date: new Date().toLocaleDateString()
+            });
+
+            triggerIslandPulse('¡Partida Finalizada! 🏆', 'success');
         }
 
-        function confirmExitGame() {
-            if (confirm("¿Seguro que deseas salir? Perderás el progreso de la partida.")) {
-                if (gameState.timerInterval) clearInterval(gameState.timerInterval);
-                document.getElementById('view-game').classList.add('hidden');
-                document.getElementById('view-setup').classList.remove('hidden');
-                updateDynamicIsland("Adivina la Bandera", "00:00.000", "0/197");
-            }
+        function saveScoreToLeaderboard(record) {
+            let scores = [];
+            try {
+                scores = JSON.parse(localStorage.getItem('apple_flag_scores') || '[]');
+            } catch (e) { scores = []; }
+
+            scores.push(record);
+            localStorage.setItem('apple_flag_scores', JSON.stringify(scores));
         }
 
-        function restartCurrentGame() {
-            initGame();
-        }
-
-
-        /* ==========================================================================
-           10. LEADERBOARD SYSTEM (LOCALSTORAGE)
-           ========================================================================== */
-        const LEADERBOARD_KEY = 'flag_game_leaderboard_v2';
-
-        function getLeaderboardData() {
-            const raw = localStorage.getItem(LEADERBOARD_KEY);
-            return raw ? JSON.parse(raw) : { speedrun: [], "10": [], "20": [], time: [], survival: [] };
-        }
-
-        function saveAndGoToLeaderboard() {
-            const data = getLeaderboardData();
-            const mode = gameState.mode;
-
-            const newEntry = {
-                player: gameState.playerName || "Jugador",
-                score: gameState.score,
-                timeMs: gameState.elapsedMilliseconds,
-                timeFormatted: formatMilliseconds(gameState.elapsedMilliseconds),
-                accuracy: Math.round((gameState.score / Math.max(1, gameState.currentQuestionIndex)) * 100),
-                date: new Date().toLocaleDateString('es-ES', { day: '2-digit', month: '2-digit' })
-            };
-
-            if (!data[mode]) data[mode] = [];
-            data[mode].push(newEntry);
-
-            // Sort leaderboard
-            if (mode === 'speedrun') {
-                // For speedrun, rank by LOWEST time elapsed first!
-                data[mode].sort((a, b) => a.timeMs - b.timeMs);
+        function toggleLeaderboardModal(show) {
+            const modal = document.getElementById('leaderboardModal');
+            if (show) {
+                modal.classList.remove('hidden');
+                filterLeaderboard(state.mode || '10');
             } else {
-                // For other modes, rank by HIGHEST score first, then lowest time
-                data[mode].sort((a, b) => b.score - a.score || a.timeMs - b.timeMs);
+                modal.classList.add('hidden');
             }
-
-            // Keep top 20
-            data[mode] = data[mode].slice(0, 20);
-
-            localStorage.setItem(LEADERBOARD_KEY, JSON.stringify(data));
-
-            openLeaderboardModal(mode);
         }
 
-        function openLeaderboardModal(mode = 'speedrun') {
-            document.getElementById('modal-leaderboard').classList.remove('hidden');
-            switchLeaderboardTab(mode);
-        }
-
-        function closeLeaderboardModal() {
-            document.getElementById('modal-leaderboard').classList.add('hidden');
-        }
-
-        function switchLeaderboardTab(mode) {
-            gameState.leaderboardTab = mode;
-
-            // Highlight Tab Buttons
-            ['speedrun', '10', '20', 'time', 'survival'].forEach(m => {
-                const btn = document.getElementById(`tab-lb-${m}`);
-                if (btn) {
-                    if (m === mode) {
-                        btn.className = "px-3 py-1.5 rounded-lg font-medium transition-all text-white bg-blue-600 shadow-md";
-                    } else {
-                        btn.className = "px-3 py-1.5 rounded-lg font-medium transition-all text-white/60 hover:text-white";
-                    }
+        function filterLeaderboard(mode) {
+            document.querySelectorAll('.lb-tab').forEach(tab => {
+                if (tab.getAttribute('data-lbmode') === mode) {
+                    tab.classList.add('bg-white', 'shadow-sm', 'font-semibold', 'text-appleDark');
+                    tab.classList.remove('text-appleGray');
+                } else {
+                    tab.classList.remove('bg-white', 'shadow-sm', 'font-semibold', 'text-appleDark');
+                    tab.classList.add('text-appleGray');
                 }
             });
 
-            // Render Rows
-            const container = document.getElementById('leaderboard-list-container');
-            const data = getLeaderboardData()[mode] || [];
+            let scores = [];
+            try {
+                scores = JSON.parse(localStorage.getItem('apple_flag_scores') || '[]');
+            } catch (e) { scores = []; }
 
-            if (data.length === 0) {
+            const filtered = scores.filter(s => s.mode === mode);
+
+            // Sorting logic: For Speedrun (197), lowest time first; others highest score/accuracy
+            if (mode === '197') {
+                filtered.sort((a, b) => a.timeMs - b.timeMs);
+            } else {
+                filtered.sort((a, b) => (b.score - a.score) || (b.accuracy - a.accuracy) || (a.timeMs - b.timeMs));
+            }
+
+            const container = document.getElementById('leaderboardContent');
+            if (filtered.length === 0) {
                 container.innerHTML = `
-                    <div class="text-center py-8 text-white/40 text-xs">
-                        <i class="fa-solid fa-trophy text-2xl mb-2 block text-white/20"></i>
-                        No hay registros guardados en este modo aún.
+                    <div class="text-center py-10 text-appleGray text-xs">
+                        No hay récords guardados aún para este modo.<br>¡Sé el primero en jugar!
                     </div>
                 `;
                 return;
             }
 
-            let html = "";
-            data.forEach((row, idx) => {
-                let medal = `#${idx + 1}`;
-                if (idx === 0) medal = "🥇";
-                else if (idx === 1) medal = "🥈";
-                else if (idx === 2) medal = "🥉";
+            const medals = ['🥇', '🥈', '🥉'];
 
-                html += `
-                    <div class="flex items-center justify-between p-3 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 transition-all text-xs">
-                        <div class="flex items-center space-x-3">
-                            <span class="font-extrabold text-sm w-6 text-center">${medal}</span>
-                            <div>
-                                <strong class="text-white block font-bold">${row.player}</strong>
-                                <span class="text-[10px] text-white/40">${row.date} • Precisión ${row.accuracy}%</span>
-                            </div>
-                        </div>
-                        <div class="text-right">
-                            <span class="font-mono font-bold text-sky-300 text-sm block">${row.timeFormatted}</span>
-                            <span class="text-[10px] text-emerald-400 font-semibold">${row.score} aciertos</span>
+            container.innerHTML = filtered.slice(0, 10).map((item, idx) => `
+                <div class="p-3 rounded-2xl bg-white/60 border border-white/80 shadow-sm flex items-center justify-between text-xs">
+                    <div class="flex items-center space-x-3">
+                        <span class="w-6 text-center font-bold text-sm">
+                            ${medals[idx] || `#${idx + 1}`}
+                        </span>
+                        <div>
+                            <div class="font-bold text-appleDark">${item.player}</div>
+                            <div class="text-[10px] text-appleGray">${item.date} • Acc: ${item.accuracy}%</div>
                         </div>
                     </div>
-                `;
-            });
-
-            container.innerHTML = html;
+                    <div class="text-right">
+                        <div class="font-bold text-appleBlue text-sm">${item.score} ptos</div>
+                        <div class="text-[10px] font-mono text-emerald-600">${item.timeFormatted}</div>
+                    </div>
+                </div>
+            `).join('');
         }
 
-        function clearLeaderboardData() {
-            if (confirm("¿Deseas borrar toda la tabla de clasificación?")) {
-                localStorage.removeItem(LEADERBOARD_KEY);
-                switchLeaderboardTab(gameState.leaderboardTab);
+        function clearLeaderboard() {
+            if (confirm('¿Seguro que deseas borrar todos los récords de la tabla?')) {
+                localStorage.removeItem('apple_flag_scores');
+                filterLeaderboard('10');
             }
         }
 
+        function resetToStart() {
+            document.getElementById('summaryScreen').classList.add('hidden');
+            document.getElementById('gameScreen').classList.add('hidden');
+            document.getElementById('startScreen').classList.remove('hidden');
 
-        /* ==========================================================================
-           11. INFO MODAL
-           ========================================================================== */
-        function openHelpModal() {
-            document.getElementById('modal-help').classList.remove('hidden');
+            const scoreEl = document.getElementById('islandScore');
+            const livesEl = document.getElementById('islandLives');
+            const timerEl = document.getElementById('islandTimer');
+            
+            scoreEl.classList.add('hidden');
+            livesEl.classList.add('hidden');
+            timerEl.classList.add('hidden');
+
+            document.getElementById('islandModeBadge').textContent = 'Apple Glass';
+            triggerIslandPulse('Adivina la Bandera', 'neutral');
         }
 
-        function closeHelpModal() {
-            document.getElementById('modal-help').classList.add('hidden');
+        function triggerConfetti() {
+            const canvas = document.getElementById('confettiCanvas');
+            const ctx = canvas.getContext('2d');
+
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+
+            const particles = [];
+            const colors = ['#0071e3', '#34c759', '#ff9500', '#ff2d55', '#af52de', '#5856d6'];
+
+            for (let i = 0; i < 80; i++) {
+                particles.push({
+                    x: canvas.width / 2,
+                    y: canvas.height / 2,
+                    vx: (Math.random() - 0.5) * 12,
+                    vy: (Math.random() - 0.5) * 12 - 4,
+                    size: Math.random() * 8 + 4,
+                    color: colors[Math.floor(Math.random() * colors.length)],
+                    rotation: Math.random() * 360,
+                    rotationSpeed: (Math.random() - 0.5) * 10,
+                    opacity: 1
+                });
+            }
+
+            let animationFrame;
+            function render() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                let alive = false;
+
+                particles.forEach(p => {
+                    p.x += p.vx;
+                    p.y += p.vy;
+                    p.vy += 0.2; // Gravity
+                    p.opacity -= 0.015;
+                    p.rotation += p.rotationSpeed;
+
+                    if (p.opacity > 0) {
+                        alive = true;
+                        ctx.save();
+                        ctx.translate(p.x, p.y);
+                        ctx.rotate((p.rotation * Math.PI) / 180);
+                        ctx.globalAlpha = Math.max(0, p.opacity);
+                        ctx.fillStyle = p.color;
+                        ctx.fillRect(-p.size / 2, -p.size / 2, p.size, p.size);
+                        ctx.restore();
+                    }
+                });
+
+                if (alive) {
+                    animationFrame = requestAnimationFrame(render);
+                } else {
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    cancelAnimationFrame(animationFrame);
+                }
+            }
+
+            render();
         }
+
+        window.addEventListener('resize', () => {
+            const canvas = document.getElementById('confettiCanvas');
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
     </script>
 </body>
 </html>
