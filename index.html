@@ -91,7 +91,7 @@
           <div class="grid grid-cols-2 gap-2.5">
             <button type="button" onclick="selectMode('speedrun')" id="mode-speedrun" class="mode-btn p-3 rounded-xl border border-blue-500 bg-blue-50/50 text-blue-600 font-medium text-xs sm:text-sm text-center transition-all">
               🏁 197 Maratón
-              <span class="block text-[10px] text-gray-500 font-normal mt-0.5">Todas las banderas con tiempo</span>
+              <span class="block text-[10px] text-gray-500 font-normal mt-0.5">Obligatorio acertar todas</span>
             </button>
             <button type="button" onclick="selectMode('q10')" id="mode-q10" class="mode-btn p-3 rounded-xl border border-gray-200 bg-white/50 text-gray-700 font-medium text-xs sm:text-sm text-center transition-all hover:bg-white">
               🎯 10 Preguntas
@@ -113,7 +113,6 @@
         Comenzar Reto
       </button>
 
-      <!-- Leaderboard Preview Link -->
       <button onclick="showLeaderboard()" class="w-full mt-3 py-2 text-xs font-medium text-blue-600 hover:text-blue-700">
         🏆 Ver Tabla de Clasificación
       </button>
@@ -515,7 +514,7 @@
         `${String(mins).padStart(2,'0')}:${String(secs).padStart(2,'0')}.${tenths}`;
     }
 
-    function updateDynamicIsland(message = null, statusColor = null) {
+    function updateDynamicIsland(message = null) {
       const modeTitles = {
         speedrun: '197 Speedrun',
         q10: '10 Preguntas',
@@ -586,7 +585,7 @@
           countryInput.value = c.name;
           suggestionsBox.classList.add('hidden');
           pendingAutocomplete = true;
-          updateDynamicIsland('¡ENTER para confirmar!', 'blue');
+          updateDynamicIsland('¡ENTER para confirmar!');
           countryInput.focus();
         };
         suggestionsBox.appendChild(item);
@@ -594,7 +593,7 @@
       suggestionsBox.classList.remove('hidden');
     }
 
-    // Keydown Handler for Double Enter Logic
+    // Keydown Handler
     countryInput.addEventListener('keydown', (e) => {
       if (e.key === 'Enter') {
         e.preventDefault();
@@ -604,14 +603,14 @@
         const currentTarget = gameCountries[currentIndex];
         const normVal = normalizeText(val);
 
-        // Find matches based on input
+        // Find matches
         const matches = countries.filter(c => {
           const normName = normalizeText(c.name);
           const matchAlias = c.aliases.some(a => normalizeText(a).startsWith(normVal));
           return normName.startsWith(normVal) || matchAlias;
         });
 
-        // First Enter: Autocomplete top suggestion if not full exact match
+        // First Enter: Autocomplete top suggestion
         if (matches.length > 0 && !pendingAutocomplete) {
           const topMatch = matches[0];
           if (normalizeText(topMatch.name) !== normVal && !topMatch.aliases.map(normalizeText).includes(normVal)) {
@@ -619,12 +618,12 @@
             suggestionsBox.classList.add('hidden');
             pendingAutocomplete = true;
             playSound('autocomplete');
-            updateDynamicIsland('¡ENTER para confirmar!', 'blue');
+            updateDynamicIsland('¡ENTER para confirmar!');
             return;
           }
         }
 
-        // Second Enter or direct exact match: Validate Answer
+        // Second Enter or Direct match: Validate
         checkAnswer(val);
       } else {
         pendingAutocomplete = false;
@@ -651,16 +650,26 @@
         flagBox.classList.add('shake');
         setTimeout(() => flagBox.classList.remove('shake'), 400);
 
-        if (currentMode === 'survival') {
-          lives--;
-          if (lives <= 0) {
-            endGame();
-            return;
+        if (currentMode === 'speedrun') {
+          // SPEEDRUN MODE: Must stay on the same flag until guessed correctly!
+          updateDynamicIsland('¡Fallaste! Sigue intentando ❌');
+          countryInput.value = '';
+          suggestionsBox.classList.add('hidden');
+          pendingAutocomplete = false;
+          countryInput.focus();
+        } else {
+          // OTHER MODES
+          if (currentMode === 'survival') {
+            lives--;
+            if (lives <= 0) {
+              endGame();
+              return;
+            }
           }
+          updateDynamicIsland(`¡Era ${current.name}!`);
+          currentIndex++;
+          setTimeout(loadNextFlag, 800);
         }
-        updateDynamicIsland(`¡Era ${current.name}!`);
-        currentIndex++;
-        setTimeout(loadNextFlag, 800);
       }
     }
 
@@ -696,7 +705,6 @@
         mode,
         date: new Date().toLocaleDateString()
       });
-      // Sort by highest score, then by lowest time
       leaderboard.sort((a, b) => b.score - a.score || a.ms - b.ms);
       localStorage.setItem('flag_game_leaderboard', JSON.stringify(leaderboard.slice(0, 30)));
     }
